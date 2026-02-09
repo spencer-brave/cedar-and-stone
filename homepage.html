@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cedar and Stone — Children's Books Worth the Time</title>
+    <title>Home | Cedar and Stone</title>
+    <link rel="stylesheet" href="./CSS/nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -71,63 +72,6 @@
         .doodle-float-alt { animation: doodleFloatAlt 6s ease-in-out infinite; }
         .doodle-spin { animation: doodleSpin 7s ease-in-out infinite; }
         .doodle-pulse { animation: doodlePulse 4s ease-in-out infinite; }
-
-        /* ===================== NAV ===================== */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            padding: 1.25rem 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: var(--text-dark);
-        }
-
-        .logo-text {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem;
-            letter-spacing: -0.01em;
-        }
-
-        .logo-ampersand {
-            font-family: 'DM Serif Display', serif;
-            font-style: italic;
-            color: var(--poppy);
-        }
-
-        .nav-contact {
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--text-med);
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 0.5rem 1.25rem;
-            border: 1.5px solid var(--mid-gray);
-            border-radius: 100px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-contact:hover {
-            border-color: var(--text-dark);
-            background: var(--text-dark);
-            color: var(--white);
-        }
 
         /* ===================== HERO ===================== */
         .hero {
@@ -781,11 +725,12 @@
 
     <!-- NAV -->
     <nav id="nav">
-        <a href="#" class="logo">
+        <a href="homepage.html" class="logo">
             <span class="logo-text">Cedar <span class="logo-ampersand">&</span> Stone</span>
         </a>
-        <div style="display:flex;align-items:center;gap:1.75rem;">
-            <a href="authors.html" style="font-size:0.88rem;font-weight:400;color:var(--text-med);text-decoration:none;letter-spacing:0.02em;transition:color 0.3s ease;" onmouseover="this.style.color='var(--text-dark)'" onmouseout="this.style.color='var(--text-med)'">Authors</a>
+        <div class="nav-links">
+            <a href="homepage.html" class="nav-link active">Home</a>
+            <a href="authors.html" class="nav-link">Authors</a>
             <a href="#contact" class="nav-contact">Get in Touch</a>
         </div>
     </nav>
