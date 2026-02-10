@@ -1,1037 +1,1556 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home | Cedar and Stone</title>
-    <link rel="stylesheet" href="./CSS/nav.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./Assets/Cedar and Stone Favicon.webp"
+    />
+    <link rel="stylesheet" href="./CSS/nav.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Fredoka:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --white: #FFFFFF;
-            --off-white: #FAFAF8;
-            --light-gray: #F3F2EF;
-            --mid-gray: #E4E2DD;
-            --text-light: #8A8780;
-            --text-med: #5C5A55;
-            --text-dark: #2D2B28;
+      :root {
+        --white: #ffffff;
+        --off-white: #fafaf8;
+        --light-gray: #f3f2ef;
+        --mid-gray: #e4e2dd;
+        --text-light: #8a8780;
+        --text-med: #5c5a55;
+        --text-dark: #2d2b28;
 
-            /* Brighter, friendlier pops */
-            --poppy: #E8734E;
-            --poppy-soft: #FDDDD2;
-            --mustard: #E4AD2B;
-            --mustard-soft: #FBF0CE;
-            --sage: #5EAD6B;
-            --sage-soft: #D2EDCF;
-            --sky: #4A9FD4;
-            --sky-soft: #CBE5F6;
-            --plum: #9878B5;
-            --plum-soft: #E4D8F0;
+        /* Brighter, friendlier pops */
+        --poppy: #e8734e;
+        --poppy-soft: #fdddd2;
+        --mustard: #e4ad2b;
+        --mustard-soft: #fbf0ce;
+        --sage: #5ead6b;
+        --sage-soft: #d2edcf;
+        --sky: #4a9fd4;
+        --sky-soft: #cbe5f6;
+        --plum: #9878b5;
+        --plum-soft: #e4d8f0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background: var(--white);
+        color: var(--text-dark);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ===================== DOODLES ===================== */
+      .doodle {
+        position: absolute;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .doodle svg {
+        display: block;
+      }
+
+      @keyframes doodleFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--white);
-            color: var(--text-dark);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+        50% {
+          transform: translateY(-6px) rotate(2deg);
         }
-
-        /* ===================== DOODLES ===================== */
-        .doodle {
-            position: absolute;
-            pointer-events: none;
-            z-index: 2;
+      }
+      @keyframes doodleFloatAlt {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
         }
-
-        .doodle svg { display: block; }
-
-        @keyframes doodleFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-6px) rotate(2deg); }
+        50% {
+          transform: translateY(-4px) rotate(-3deg);
         }
-        @keyframes doodleFloatAlt {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-4px) rotate(-3deg); }
+      }
+      @keyframes doodleSpin {
+        0%,
+        100% {
+          transform: rotate(0deg);
         }
-        @keyframes doodleSpin {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(12deg); }
+        50% {
+          transform: rotate(12deg);
         }
-        @keyframes doodlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+      }
+      @keyframes doodlePulse {
+        0%,
+        100% {
+          transform: scale(1);
         }
+        50% {
+          transform: scale(1.08);
+        }
+      }
 
-        .doodle-float { animation: doodleFloat 5s ease-in-out infinite; }
-        .doodle-float-alt { animation: doodleFloatAlt 6s ease-in-out infinite; }
-        .doodle-spin { animation: doodleSpin 7s ease-in-out infinite; }
-        .doodle-pulse { animation: doodlePulse 4s ease-in-out infinite; }
+      .doodle-float {
+        animation: doodleFloat 5s ease-in-out infinite;
+      }
+      .doodle-float-alt {
+        animation: doodleFloatAlt 6s ease-in-out infinite;
+      }
+      .doodle-spin {
+        animation: doodleSpin 7s ease-in-out infinite;
+      }
+      .doodle-pulse {
+        animation: doodlePulse 4s ease-in-out infinite;
+      }
 
-        /* ===================== HERO ===================== */
+      /* ===================== HERO ===================== */
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 7rem 2.5rem 5rem;
+        max-width: 1240px;
+        margin: 0 auto;
+        gap: 4rem;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 560px;
+        position: relative;
+      }
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-med);
+        margin-bottom: 1.75rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.2s forwards;
+      }
+
+      .hero-tag-line {
+        width: 24px;
+        height: 1.5px;
+        background: var(--poppy);
+      }
+
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(2.6rem, 5vw, 3.8rem);
+        line-height: 1.1;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        color: var(--text-dark);
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.4s forwards;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: var(--poppy);
+        position: relative;
+      }
+
+      .hero h1 em::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: -4px;
+        right: -4px;
+        height: 8px;
+        background: var(--mustard-soft);
+        border-radius: 4px;
+        z-index: -1;
+        transform: rotate(-0.5deg);
+      }
+
+      .hero-sub {
+        font-size: 1.1rem;
+        line-height: 1.75;
+        color: var(--text-med);
+        font-weight: 300;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.6s forwards;
+      }
+
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--white);
+        background: var(--text-dark);
+        text-decoration: none;
+        padding: 0.75rem 1.75rem;
+        border-radius: 100px;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.8s forwards;
+        transition: all 0.3s ease;
+      }
+
+      .hero-cta:hover {
+        background: var(--poppy);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(232, 115, 78, 0.2);
+      }
+
+      .hero-cta svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .hero-image {
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.5s forwards;
+        position: relative;
+      }
+
+      .hero-image-frame {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+      }
+
+      .image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          145deg,
+          var(--light-gray) 0%,
+          var(--mid-gray) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        color: var(--text-light);
+      }
+
+      .image-placeholder svg {
+        width: 32px;
+        height: 32px;
+        opacity: 0.3;
+      }
+
+      .image-placeholder span {
+        opacity: 0.45;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+      }
+
+      .hero-image-accent {
+        position: absolute;
+        bottom: -14px;
+        right: -14px;
+        width: 110px;
+        height: 110px;
+        background: var(--mustard-soft);
+        border-radius: 16px;
+        z-index: -1;
+        transform: rotate(3deg);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===================== COLOR RIBBON ===================== */
+      .color-ribbon {
+        display: flex;
+        height: 4px;
+      }
+
+      .color-ribbon span {
+        flex: 1;
+      }
+      .color-ribbon span:nth-child(1) {
+        background: var(--sage);
+      }
+      .color-ribbon span:nth-child(2) {
+        background: var(--mustard);
+      }
+      .color-ribbon span:nth-child(3) {
+        background: var(--poppy);
+      }
+      .color-ribbon span:nth-child(4) {
+        background: var(--sky);
+      }
+      .color-ribbon span:nth-child(5) {
+        background: var(--plum);
+      }
+
+      /* ===================== SECTION SHARED ===================== */
+      section {
+        padding: 6.5rem 2rem;
+      }
+      .section-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+
+      .section-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 1.25rem;
+      }
+
+      .section-heading {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+        font-weight: 400;
+        line-height: 1.15;
+        margin-bottom: 1.25rem;
+        color: var(--text-dark);
+      }
+
+      .section-heading em {
+        font-style: italic;
+        color: var(--poppy);
+      }
+
+      /* ===================== PHILOSOPHY ===================== */
+      .philosophy {
+        background: var(--off-white);
+      }
+
+      .philosophy-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 5rem;
+        align-items: center;
+      }
+
+      .philosophy-text p {
+        font-size: 1.02rem;
+        line-height: 1.8;
+        color: var(--text-med);
+        font-weight: 300;
+        margin-bottom: 1.25rem;
+      }
+
+      .philosophy-image-area {
+        position: relative;
+      }
+
+      .philosophy-image-frame {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 6px 32px rgba(0, 0, 0, 0.05);
+      }
+
+      .philosophy-image-accent {
+        position: absolute;
+        top: -12px;
+        left: -12px;
+        width: 80px;
+        height: 80px;
+        border: 2.5px solid var(--sky-soft);
+        border-radius: 12px;
+        z-index: -1;
+        transform: rotate(-4deg);
+      }
+
+      /* ===================== HIGHLIGHTS ===================== */
+      .highlights {
+        background: var(--text-dark);
+        padding: 3.5rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .highlights::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            ellipse 50% 80% at 20% 50%,
+            rgba(94, 173, 107, 0.1),
+            transparent
+          ),
+          radial-gradient(
+            ellipse 40% 60% at 80% 50%,
+            rgba(232, 115, 78, 0.07),
+            transparent
+          );
+      }
+
+      .highlights-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .highlight-stat {
+        text-align: center;
+      }
+
+      .highlight-number {
+        font-family: "Fredoka", sans-serif;
+        font-size: 4rem;
+        font-weight: 600;
+        line-height: 1;
+        margin-bottom: 0.35rem;
+      }
+
+      .highlights-inner .highlight-stat:nth-child(1) .highlight-number {
+        color: var(--sky-soft);
+      }
+      .highlights-inner .highlight-stat:nth-child(2) .highlight-number {
+        color: var(--poppy-soft);
+      }
+      .highlights-inner .highlight-stat:nth-child(3) .highlight-number {
+        color: var(--sage-soft);
+      }
+
+      .highlight-label {
+        font-size: 0.85rem;
+        font-weight: 300;
+        color: var(--mid-gray);
+        letter-spacing: 0.02em;
+      }
+
+      /* ===================== HOW WE BUILD ===================== */
+      .how-section {
+        background: var(--white);
+        position: relative;
+      }
+
+      .how-header {
+        text-align: center;
+        max-width: 580px;
+        margin: 0 auto 4rem;
+      }
+
+      .how-header p {
+        font-size: 1.02rem;
+        line-height: 1.8;
+        color: var(--text-med);
+        font-weight: 300;
+      }
+
+      .how-items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .how-item {
+        padding: 2.25rem 1.75rem;
+        border-radius: 16px;
+        background: var(--off-white);
+        border: 1px solid transparent;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .how-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: 16px 16px 0 0;
+      }
+
+      .how-item:nth-child(1)::before {
+        background: var(--sage);
+      }
+      .how-item:nth-child(2)::before {
+        background: var(--mustard);
+      }
+      .how-item:nth-child(3)::before {
+        background: var(--sky);
+      }
+
+      .how-item:hover {
+        border-color: var(--mid-gray);
+        background: var(--white);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+      }
+
+      .how-number {
+        font-family: "Fredoka", sans-serif;
+        font-size: 3.8rem;
+        font-weight: 600;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        opacity: 0.7;
+      }
+
+      .how-item:nth-child(1) .how-number {
+        color: var(--sage);
+      }
+      .how-item:nth-child(2) .how-number {
+        color: var(--mustard);
+      }
+      .how-item:nth-child(3) .how-number {
+        color: var(--sky);
+      }
+
+      .how-item h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.15rem;
+        font-weight: 400;
+        margin-bottom: 0.65rem;
+      }
+
+      .how-item p {
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--text-med);
+        font-weight: 300;
+      }
+
+      /* ===================== PULL QUOTE ===================== */
+      .pull-quote {
+        background: var(--off-white);
+        text-align: center;
+        padding: 5.5rem 2rem;
+        position: relative;
+      }
+
+      .pull-quote-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        margin: 0 auto;
+      }
+
+      .pull-quote blockquote {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+        line-height: 1.35;
+        font-weight: 400;
+        margin-bottom: 1.25rem;
+        color: var(--text-dark);
+      }
+
+      .pull-quote blockquote em {
+        font-style: italic;
+        color: var(--poppy);
+      }
+
+      .pull-quote .attribution {
+        font-size: 0.82rem;
+        color: var(--text-light);
+        font-weight: 300;
+        letter-spacing: 0.03em;
+      }
+
+      /* ===================== CREATORS ===================== */
+      .creators-section {
+        background: var(--white);
+        position: relative;
+      }
+
+      .creators-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: start;
+      }
+
+      .creators-text p {
+        font-size: 1.02rem;
+        line-height: 1.8;
+        color: var(--text-med);
+        font-weight: 300;
+        margin-bottom: 1.25rem;
+      }
+
+      .creators-features {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .creator-feature {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        background: var(--off-white);
+        padding: 1.35rem;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .creator-feature:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        background: var(--white);
+        border-color: var(--mid-gray);
+      }
+
+      .cf-icon {
+        flex-shrink: 0;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .creator-feature:nth-child(1) .cf-icon {
+        background: var(--sage-soft);
+      }
+      .creator-feature:nth-child(2) .cf-icon {
+        background: var(--mustard-soft);
+      }
+      .creator-feature:nth-child(3) .cf-icon {
+        background: var(--poppy-soft);
+      }
+      .creator-feature:nth-child(4) .cf-icon {
+        background: var(--sky-soft);
+      }
+
+      .cf-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .creator-feature:nth-child(1) .cf-icon svg {
+        color: var(--sage);
+      }
+      .creator-feature:nth-child(2) .cf-icon svg {
+        color: var(--mustard);
+      }
+      .creator-feature:nth-child(3) .cf-icon svg {
+        color: var(--poppy);
+      }
+      .creator-feature:nth-child(4) .cf-icon svg {
+        color: var(--sky);
+      }
+
+      .cf-text h4 {
+        font-family: "DM Serif Display", serif;
+        font-size: 0.95rem;
+        font-weight: 400;
+        margin-bottom: 0.25rem;
+      }
+
+      .cf-text p {
+        font-size: 0.82rem;
+        line-height: 1.6;
+        color: var(--text-med);
+        font-weight: 300;
+        margin-bottom: 0;
+      }
+
+      /* ===================== CONTACT ===================== */
+      .contact-section {
+        background: var(--off-white);
+        padding: 7rem 2rem 8rem;
+        position: relative;
+      }
+
+      .contact-inner {
+        max-width: 540px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .contact-sub {
+        font-size: 0.98rem;
+        color: var(--text-med);
+        font-weight: 300;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        text-align: left;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.9rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
+      .form-group__checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .form-group .form-group__checkbox label,
+      .form-group .form-group__checkbox input {
+        cursor: pointer;
+        text-transform: none;
+      }
+
+      .form-group label {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--text-light);
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        font-family: "Outfit", sans-serif;
+        font-size: 0.92rem;
+        font-weight: 300;
+        padding: 0.8rem 1rem;
+        border: 1.5px solid var(--mid-gray);
+        border-radius: 8px;
+        background: var(--white);
+        color: var(--text-dark);
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        border-color: var(--poppy);
+        box-shadow: 0 0 0 3px rgba(232, 115, 78, 0.08);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: var(--text-light);
+      }
+
+      .submit-btn {
+        font-family: "Outfit", sans-serif;
+        font-size: 0.87rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.95rem 2.25rem;
+        background: var(--text-dark);
+        color: var(--white);
+        border: none;
+        border-radius: 100px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 0.5rem;
+        align-self: center;
+      }
+
+      .submit-btn:hover {
+        background: var(--poppy);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(232, 115, 78, 0.2);
+      }
+
+      /* ===================== FOOTER ===================== */
+      footer {
+        background: var(--text-dark);
+        color: var(--text-light);
+        padding: 2.5rem 2rem;
+        text-align: center;
+      }
+
+      .footer-logo {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.05rem;
+        color: var(--white);
+        margin-bottom: 0.4rem;
+      }
+
+      .footer-logo .logo-ampersand {
+        color: var(--poppy);
+      }
+
+      footer p {
+        font-size: 0.78rem;
+        font-weight: 300;
+      }
+
+      /* ===================== TEXTURE ===================== */
+      .texture-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1000;
+        opacity: 0.012;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* ===================== SCROLL REVEAL ===================== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+
+      /* ===================== RESPONSIVE ===================== */
+      @media (max-width: 900px) {
         .hero {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            padding: 7rem 2.5rem 5rem;
-            max-width: 1240px;
-            margin: 0 auto;
-            gap: 4rem;
-            position: relative;
+          grid-template-columns: 1fr;
+          min-height: auto;
+          padding: 7rem 1.5rem 4rem;
+          gap: 2.5rem;
         }
-
-        .hero-content { max-width: 560px; position: relative; }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.78rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-med);
-            margin-bottom: 1.75rem;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.2s forwards;
-        }
-
-        .hero-tag-line {
-            width: 24px;
-            height: 1.5px;
-            background: var(--poppy);
-        }
-
-        .hero h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.6rem, 5vw, 3.8rem);
-            line-height: 1.1;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.4s forwards;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--poppy);
-            position: relative;
-        }
-
-        .hero h1 em::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: -4px;
-            right: -4px;
-            height: 8px;
-            background: var(--mustard-soft);
-            border-radius: 4px;
-            z-index: -1;
-            transform: rotate(-0.5deg);
-        }
-
-        .hero-sub {
-            font-size: 1.1rem;
-            line-height: 1.75;
-            color: var(--text-med);
-            font-weight: 300;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.6s forwards;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--white);
-            background: var(--text-dark);
-            text-decoration: none;
-            padding: 0.75rem 1.75rem;
-            border-radius: 100px;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.8s forwards;
-            transition: all 0.3s ease;
-        }
-
-        .hero-cta:hover {
-            background: var(--poppy);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(232,115,78,0.2);
-        }
-
-        .hero-cta svg { width: 16px; height: 16px; }
-
         .hero-image {
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.5s forwards;
-            position: relative;
+          max-width: 400px;
+          margin: 0 auto;
         }
-
-        .hero-image-frame {
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+        .doodle {
+          display: none;
         }
+      }
 
-        .image-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, var(--light-gray) 0%, var(--mid-gray) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            color: var(--text-light);
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem 1.25rem;
         }
-
-        .image-placeholder svg { width: 32px; height: 32px; opacity: 0.3; }
-
-        .image-placeholder span {
-            opacity: 0.45;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
+        section {
+          padding: 4.5rem 1.25rem;
         }
-
-        .hero-image-accent {
-            position: absolute;
-            bottom: -14px;
-            right: -14px;
-            width: 110px;
-            height: 110px;
-            background: var(--mustard-soft);
-            border-radius: 16px;
-            z-index: -1;
-            transform: rotate(3deg);
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===================== COLOR RIBBON ===================== */
-        .color-ribbon {
-            display: flex;
-            height: 4px;
-        }
-
-        .color-ribbon span { flex: 1; }
-        .color-ribbon span:nth-child(1) { background: var(--sage); }
-        .color-ribbon span:nth-child(2) { background: var(--mustard); }
-        .color-ribbon span:nth-child(3) { background: var(--poppy); }
-        .color-ribbon span:nth-child(4) { background: var(--sky); }
-        .color-ribbon span:nth-child(5) { background: var(--plum); }
-
-        /* ===================== SECTION SHARED ===================== */
-        section { padding: 6.5rem 2rem; }
-        .section-inner { max-width: 1080px; margin: 0 auto; }
-
-        .section-label {
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-light);
-            margin-bottom: 1.25rem;
-        }
-
-        .section-heading {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-            font-weight: 400;
-            line-height: 1.15;
-            margin-bottom: 1.25rem;
-            color: var(--text-dark);
-        }
-
-        .section-heading em {
-            font-style: italic;
-            color: var(--poppy);
-        }
-
-        /* ===================== PHILOSOPHY ===================== */
-        .philosophy {
-            background: var(--off-white);
-        }
-
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .philosophy-text p {
-            font-size: 1.02rem;
-            line-height: 1.8;
-            color: var(--text-med);
-            font-weight: 300;
-            margin-bottom: 1.25rem;
-        }
-
-        .philosophy-image-area { position: relative; }
-
-        .philosophy-image-frame {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 6px 32px rgba(0,0,0,0.05);
-        }
-
-        .philosophy-image-accent {
-            position: absolute;
-            top: -12px;
-            left: -12px;
-            width: 80px;
-            height: 80px;
-            border: 2.5px solid var(--sky-soft);
-            border-radius: 12px;
-            z-index: -1;
-            transform: rotate(-4deg);
-        }
-
-        /* ===================== HIGHLIGHTS ===================== */
-        .highlights {
-            background: var(--text-dark);
-            padding: 3.5rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .highlights::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background:
-                radial-gradient(ellipse 50% 80% at 20% 50%, rgba(94, 173, 107, 0.1), transparent),
-                radial-gradient(ellipse 40% 60% at 80% 50%, rgba(232, 115, 78, 0.07), transparent);
-        }
-
-        .highlights-inner {
-            max-width: 1080px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .highlight-stat { text-align: center; }
-
-        .highlight-number {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 4rem;
-            font-weight: 600;
-            line-height: 1;
-            margin-bottom: 0.35rem;
-        }
-
-        .highlights-inner .highlight-stat:nth-child(1) .highlight-number { color: var(--sky-soft); }
-        .highlights-inner .highlight-stat:nth-child(2) .highlight-number { color: var(--poppy-soft); }
-        .highlights-inner .highlight-stat:nth-child(3) .highlight-number { color: var(--sage-soft); }
-
-        .highlight-label {
-            font-size: 0.85rem;
-            font-weight: 300;
-            color: var(--mid-gray);
-            letter-spacing: 0.02em;
-        }
-
-        /* ===================== HOW WE BUILD ===================== */
-        .how-section {
-            background: var(--white);
-            position: relative;
-        }
-
-        .how-header {
-            text-align: center;
-            max-width: 580px;
-            margin: 0 auto 4rem;
-        }
-
-        .how-header p {
-            font-size: 1.02rem;
-            line-height: 1.8;
-            color: var(--text-med);
-            font-weight: 300;
-        }
-
-        .how-items {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .how-item {
-            padding: 2.25rem 1.75rem;
-            border-radius: 16px;
-            background: var(--off-white);
-            border: 1px solid transparent;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .how-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            border-radius: 16px 16px 0 0;
-        }
-
-        .how-item:nth-child(1)::before { background: var(--sage); }
-        .how-item:nth-child(2)::before { background: var(--mustard); }
-        .how-item:nth-child(3)::before { background: var(--sky); }
-
-        .how-item:hover {
-            border-color: var(--mid-gray);
-            background: var(--white);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 28px rgba(0,0,0,0.05);
-        }
-
-        .how-number {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 3.8rem;
-            font-weight: 600;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-            opacity: 0.7;
-        }
-
-        .how-item:nth-child(1) .how-number { color: var(--sage); }
-        .how-item:nth-child(2) .how-number { color: var(--mustard); }
-        .how-item:nth-child(3) .how-number { color: var(--sky); }
-
-        .how-item h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.15rem;
-            font-weight: 400;
-            margin-bottom: 0.65rem;
-        }
-
-        .how-item p {
-            font-size: 0.88rem;
-            line-height: 1.7;
-            color: var(--text-med);
-            font-weight: 300;
-        }
-
-        /* ===================== PULL QUOTE ===================== */
-        .pull-quote {
-            background: var(--off-white);
-            text-align: center;
-            padding: 5.5rem 2rem;
-            position: relative;
-        }
-
-        .pull-quote-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 680px;
-            margin: 0 auto;
-        }
-
-        .pull-quote blockquote {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(1.5rem, 3.2vw, 2.2rem);
-            line-height: 1.35;
-            font-weight: 400;
-            margin-bottom: 1.25rem;
-            color: var(--text-dark);
-        }
-
-        .pull-quote blockquote em {
-            font-style: italic;
-            color: var(--poppy);
-        }
-
-        .pull-quote .attribution {
-            font-size: 0.82rem;
-            color: var(--text-light);
-            font-weight: 300;
-            letter-spacing: 0.03em;
-        }
-
-        /* ===================== CREATORS ===================== */
-        .creators-section {
-            background: var(--white);
-            position: relative;
-        }
-
+        .philosophy-grid,
         .creators-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
+          grid-template-columns: 1fr;
+          gap: 3rem;
         }
-
-        .creators-text p {
-            font-size: 1.02rem;
-            line-height: 1.8;
-            color: var(--text-med);
-            font-weight: 300;
-            margin-bottom: 1.25rem;
+        .how-items {
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
-
-        .creators-features {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .highlights-inner {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
         }
-
-        .creator-feature {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            background: var(--off-white);
-            padding: 1.35rem;
-            border-radius: 12px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .creator-feature:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            background: var(--white);
-            border-color: var(--mid-gray);
-        }
-
-        .cf-icon {
-            flex-shrink: 0;
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .creator-feature:nth-child(1) .cf-icon { background: var(--sage-soft); }
-        .creator-feature:nth-child(2) .cf-icon { background: var(--mustard-soft); }
-        .creator-feature:nth-child(3) .cf-icon { background: var(--poppy-soft); }
-        .creator-feature:nth-child(4) .cf-icon { background: var(--sky-soft); }
-
-        .cf-icon svg { width: 20px; height: 20px; }
-
-        .creator-feature:nth-child(1) .cf-icon svg { color: var(--sage); }
-        .creator-feature:nth-child(2) .cf-icon svg { color: var(--mustard); }
-        .creator-feature:nth-child(3) .cf-icon svg { color: var(--poppy); }
-        .creator-feature:nth-child(4) .cf-icon svg { color: var(--sky); }
-
-        .cf-text h4 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 0.95rem;
-            font-weight: 400;
-            margin-bottom: 0.25rem;
-        }
-
-        .cf-text p {
-            font-size: 0.82rem;
-            line-height: 1.6;
-            color: var(--text-med);
-            font-weight: 300;
-            margin-bottom: 0;
-        }
-
-        /* ===================== CONTACT ===================== */
-        .contact-section {
-            background: var(--off-white);
-            padding: 7rem 2rem 8rem;
-            position: relative;
-        }
-
-        .contact-inner {
-            max-width: 540px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-sub {
-            font-size: 0.98rem;
-            color: var(--text-med);
-            font-weight: 300;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            text-align: left;
-        }
-
         .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.9rem;
+          grid-template-columns: 1fr;
         }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
+        .pull-quote {
+          padding: 4rem 1.5rem;
         }
-
-        .form-group label {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--text-light);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 300;
-            padding: 0.8rem 1rem;
-            border: 1.5px solid var(--mid-gray);
-            border-radius: 8px;
-            background: var(--white);
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--poppy);
-            box-shadow: 0 0 0 3px rgba(232,115,78,0.08);
-        }
-
-        .form-group textarea { resize: vertical; min-height: 110px; }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder { color: var(--text-light); }
-
-        .submit-btn {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.87rem;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.95rem 2.25rem;
-            background: var(--text-dark);
-            color: var(--white);
-            border: none;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 0.5rem;
-            align-self: center;
-        }
-
-        .submit-btn:hover {
-            background: var(--poppy);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(232,115,78,0.2);
-        }
-
-        /* ===================== FOOTER ===================== */
-        footer {
-            background: var(--text-dark);
-            color: var(--text-light);
-            padding: 2.5rem 2rem;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem;
-            color: var(--white);
-            margin-bottom: 0.4rem;
-        }
-
-        .footer-logo .logo-ampersand { color: var(--poppy); }
-
-        footer p { font-size: 0.78rem; font-weight: 300; }
-
-        /* ===================== TEXTURE ===================== */
-        .texture-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            z-index: 1000;
-            opacity: 0.012;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-        }
-
-        /* ===================== SCROLL REVEAL ===================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-
-        /* ===================== RESPONSIVE ===================== */
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-                min-height: auto;
-                padding: 7rem 1.5rem 4rem;
-                gap: 2.5rem;
-            }
-            .hero-image { max-width: 400px; margin: 0 auto; }
-            .doodle { display: none; }
-        }
-
-        @media (max-width: 768px) {
-            nav { padding: 1rem 1.25rem; }
-            section { padding: 4.5rem 1.25rem; }
-            .philosophy-grid,
-            .creators-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .how-items { grid-template-columns: 1fr; gap: 1rem; }
-            .highlights-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-            .form-row { grid-template-columns: 1fr; }
-            .pull-quote { padding: 4rem 1.5rem; }
-        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="texture-overlay"></div>
 
     <!-- NAV -->
     <nav id="nav">
-        <a href="/" class="logo">
-            <span class="logo-text">Cedar <span class="logo-ampersand">&</span> Stone</span>
-        </a>
-        <div class="nav-links">
-            <a href="/" class="nav-link active">Home</a>
-            <a href="/authors" class="nav-link">Authors</a>
-            <a href="#contact" class="nav-contact">Get in Touch</a>
-        </div>
+      <a href="/" class="logo">
+        <span class="logo-text"
+          >Cedar <span class="logo-ampersand">&</span> Stone</span
+        >
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="/authors" class="nav-link">Authors</a>
+        <a href="#contact" class="nav-contact">Get in Touch</a>
+      </div>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-        <!-- Doodles -->
-        <div class="doodle doodle-float" style="top: 18%; right: 48%; opacity: 0; animation: fadeUp 0.8s ease 1.2s forwards, doodleFloat 5s ease-in-out 1.2s infinite;">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <path d="M14 3C14.5 9 19 13.5 25 14C19 14.5 14.5 19 14 25C13.5 19 9 14.5 3 14C9 13.5 13.5 9 14 3Z" stroke="#E4AD2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="#FBF0CE" fill-opacity="0.4"/>
-            </svg>
-        </div>
+      <!-- Doodles -->
+      <div
+        class="doodle doodle-float"
+        style="
+          top: 18%;
+          right: 48%;
+          opacity: 0;
+          animation:
+            fadeUp 0.8s ease 1.2s forwards,
+            doodleFloat 5s ease-in-out 1.2s infinite;
+        "
+      >
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path
+            d="M14 3C14.5 9 19 13.5 25 14C19 14.5 14.5 19 14 25C13.5 19 9 14.5 3 14C9 13.5 13.5 9 14 3Z"
+            stroke="#E4AD2B"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="#FBF0CE"
+            fill-opacity="0.4"
+          />
+        </svg>
+      </div>
 
-        <div class="doodle doodle-float-alt" style="bottom: 22%; left: 5%; opacity: 0; animation: fadeUp 0.8s ease 1.5s forwards, doodleFloatAlt 6s ease-in-out 1.5s infinite;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="9" stroke="#4A9FD4" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2 4" fill="none"/>
-            </svg>
-        </div>
+      <div
+        class="doodle doodle-float-alt"
+        style="
+          bottom: 22%;
+          left: 5%;
+          opacity: 0;
+          animation:
+            fadeUp 0.8s ease 1.5s forwards,
+            doodleFloatAlt 6s ease-in-out 1.5s infinite;
+        "
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle
+            cx="12"
+            cy="12"
+            r="9"
+            stroke="#4A9FD4"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-dasharray="2 4"
+            fill="none"
+          />
+        </svg>
+      </div>
 
-        <div class="doodle doodle-spin" style="top: 30%; right: 3%; opacity: 0; animation: fadeUp 0.8s ease 1.8s forwards, doodleSpin 7s ease-in-out 1.8s infinite;">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M9 3V15M3 9H15" stroke="#E8734E" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-        </div>
+      <div
+        class="doodle doodle-spin"
+        style="
+          top: 30%;
+          right: 3%;
+          opacity: 0;
+          animation:
+            fadeUp 0.8s ease 1.8s forwards,
+            doodleSpin 7s ease-in-out 1.8s infinite;
+        "
+      >
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path
+            d="M9 3V15M3 9H15"
+            stroke="#E8734E"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
 
-        <div class="doodle doodle-pulse" style="bottom: 32%; right: 8%; opacity: 0; animation: fadeUp 0.8s ease 2s forwards, doodlePulse 4s ease-in-out 2s infinite;">
-            <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
-                <path d="M10 16C10 16 2 11 2 6C2 3.5 4 2 6.5 2C8 2 9.5 3 10 4C10.5 3 12 2 13.5 2C16 2 18 3.5 18 6C18 11 10 16 10 16Z" stroke="#9878B5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="#E4D8F0" fill-opacity="0.3"/>
-            </svg>
-        </div>
+      <div
+        class="doodle doodle-pulse"
+        style="
+          bottom: 32%;
+          right: 8%;
+          opacity: 0;
+          animation:
+            fadeUp 0.8s ease 2s forwards,
+            doodlePulse 4s ease-in-out 2s infinite;
+        "
+      >
+        <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
+          <path
+            d="M10 16C10 16 2 11 2 6C2 3.5 4 2 6.5 2C8 2 9.5 3 10 4C10.5 3 12 2 13.5 2C16 2 18 3.5 18 6C18 11 10 16 10 16Z"
+            stroke="#9878B5"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="#E4D8F0"
+            fill-opacity="0.3"
+          />
+        </svg>
+      </div>
 
-        <div class="hero-content">
-            <div class="hero-tag">
-                <span class="hero-tag-line"></span>
-                Children's books, done differently
-            </div>
-            <h1>Books They’ll Outgrow, <em>but Never Forget</em></h1>
-            <p class="hero-sub">We make children's books that parents actually want to read out loud. The kind that make both of you laugh, wonder, and not want to stop at just one more page.</p>
-            <a href="#contact" class="hero-cta">
-                Learn more
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </a>
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="hero-tag-line"></span>
+          Children's books, done differently
         </div>
-        <div class="hero-image">
-            <div class="hero-image-frame">
-                <img src="./Assets/Mom and daughter reading.webp" alt="Mom and daughter reading" class="philosophy-image" style="width:100%;height:100%;object-fit:cover;">
-            </div>
-            <div class="hero-image-accent"></div>
+        <h1>Books They’ll Outgrow, <em>but Never Forget</em></h1>
+        <p class="hero-sub">
+          We make children's books that parents actually want to read out loud.
+          The kind that make both of you laugh, wonder, and not want to stop at
+          just one more page.
+        </p>
+        <a href="#contact" class="hero-cta">
+          Learn more
+          <svg
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 8h10M9 4l4 4-4 4" />
+          </svg>
+        </a>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-frame">
+          <img
+            src="./Assets/Mom and daughter reading.webp"
+            alt="Mom and daughter reading"
+            class="philosophy-image"
+            style="width: 100%; height: 100%; object-fit: cover"
+          />
         </div>
+        <div class="hero-image-accent"></div>
+      </div>
     </section>
 
     <!-- COLOR RIBBON -->
     <div class="color-ribbon">
-        <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
     </div>
 
     <!-- PHILOSOPHY -->
     <section class="philosophy">
-        <div class="section-inner" style="position: relative;">
-            <div class="doodle doodle-float" style="top: -10px; right: 40px;">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <path d="M11 2C11.4 7 15 10.6 20 11C15 11.4 11.4 15 11 20C10.6 15 7 11.4 2 11C7 10.6 10.6 7 11 2Z" stroke="#E4AD2B" stroke-width="1.5" stroke-linecap="round" fill="#FBF0CE" fill-opacity="0.25"/>
-                </svg>
-            </div>
-
-            <div class="philosophy-grid">
-                <div class="philosophy-text">
-                    <div class="section-label reveal">Our Why</div>
-                    <h2 class="section-heading reveal reveal-delay-1">A book read together is the most <em>powerful</em> thing in a child's world</h2>
-                    <p class="reveal reveal-delay-2">There's a moment, right around page three, when your child stops squirming and leans in. Their breathing slows. They point at something in the illustration and look up at you to make sure you saw it too.</p>
-                    <p class="reveal reveal-delay-3">That moment isn't an accident. It's the whole point. Every book we publish is designed to create more of those moments. Moments where a parent and child are completely locked in, together, without trying.</p>
-                    <p class="reveal reveal-delay-4">We work with child development advisors, experienced educators, and some of the best illustrators in the world to craft stories that hold attention the right way. Not through overstimulation, but through genuine wonder.</p>
-                </div>
-                <div class="philosophy-image-area reveal reveal-delay-2">
-                    <div class="philosophy-image-frame">
-                        <img src="./Assets/Mom and daughter 2.webp" alt="Mom and daughter reading" class="philosophy-image" style="width:100%;height:100%;object-fit:cover;">
-                    </div>
-                    <div class="philosophy-image-accent"></div>
-                    <div class="doodle doodle-float-alt" style="bottom: -20px; right: -20px;">
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                            <path d="M5 25C8 18 12 14 18 10" stroke="#4A9FD4" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 5"/>
-                            <path d="M16 7L19 10L15 12" stroke="#4A9FD4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
+      <div class="section-inner" style="position: relative">
+        <div class="doodle doodle-float" style="top: -10px; right: 40px">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path
+              d="M11 2C11.4 7 15 10.6 20 11C15 11.4 11.4 15 11 20C10.6 15 7 11.4 2 11C7 10.6 10.6 7 11 2Z"
+              stroke="#E4AD2B"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              fill="#FBF0CE"
+              fill-opacity="0.25"
+            />
+          </svg>
         </div>
+
+        <div class="philosophy-grid">
+          <div class="philosophy-text">
+            <div class="section-label reveal">Our Why</div>
+            <h2 class="section-heading reveal reveal-delay-1">
+              A book read together is the most <em>powerful</em> thing in a
+              child's world
+            </h2>
+            <p class="reveal reveal-delay-2">
+              There's a moment, right around page three, when your child stops
+              squirming and leans in. Their breathing slows. They point at
+              something in the illustration and look up at you to make sure you
+              saw it too.
+            </p>
+            <p class="reveal reveal-delay-3">
+              That moment isn't an accident. It's the whole point. Every book we
+              publish is designed to create more of those moments. Moments where
+              a parent and child are completely locked in, together, without
+              trying.
+            </p>
+            <p class="reveal reveal-delay-4">
+              We work with child development advisors, experienced educators,
+              and some of the best illustrators in the world to craft stories
+              that hold attention the right way. Not through overstimulation,
+              but through genuine wonder.
+            </p>
+          </div>
+          <div class="philosophy-image-area reveal reveal-delay-2">
+            <div class="philosophy-image-frame">
+              <img
+                src="./Assets/Mom and daughter 2.webp"
+                alt="Mom and daughter reading"
+                class="philosophy-image"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="philosophy-image-accent"></div>
+            <div
+              class="doodle doodle-float-alt"
+              style="bottom: -20px; right: -20px"
+            >
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path
+                  d="M5 25C8 18 12 14 18 10"
+                  stroke="#4A9FD4"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-dasharray="3 5"
+                />
+                <path
+                  d="M16 7L19 10L15 12"
+                  stroke="#4A9FD4"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- HIGHLIGHTS -->
     <section class="highlights">
-        <div class="highlights-inner">
-            <div class="highlight-stat reveal">
-                <div class="highlight-number">15 min</div>
-                <div class="highlight-label">That's all it takes before bedtime</div>
-            </div>
-            <div class="highlight-stat reveal reveal-delay-1">
-                <div class="highlight-number">1,000+</div>
-                <div class="highlight-label">Neural connections formed per second</div>
-            </div>
-            <div class="highlight-stat reveal reveal-delay-2">
-                <div class="highlight-number">∞</div>
-                <div class="highlight-label">Times they'll ask you to read it again</div>
-            </div>
+      <div class="highlights-inner">
+        <div class="highlight-stat reveal">
+          <div class="highlight-number">15 min</div>
+          <div class="highlight-label">That's all it takes before bedtime</div>
         </div>
+        <div class="highlight-stat reveal reveal-delay-1">
+          <div class="highlight-number">1,000+</div>
+          <div class="highlight-label">
+            Neural connections formed per second
+          </div>
+        </div>
+        <div class="highlight-stat reveal reveal-delay-2">
+          <div class="highlight-number">∞</div>
+          <div class="highlight-label">
+            Times they'll ask you to read it again
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- HOW WE BUILD -->
     <section class="how-section">
-        <div class="section-inner" style="position: relative;">
-            <div class="doodle doodle-spin" style="top: 0; right: 0;">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 2V18M2 10H18" stroke="#E8734E" stroke-width="1.8" stroke-linecap="round"/>
-                </svg>
-            </div>
-
-            <div class="how-header">
-                <div class="section-label reveal">How We Build Books</div>
-                <h2 class="section-heading reveal reveal-delay-1">Stories that delight on <em>every</em> level</h2>
-                <p class="reveal reveal-delay-2">Beautiful enough to display. Smart enough to matter. Fun enough that you'll catch yourself turning pages after they've fallen asleep.</p>
-            </div>
-            <div class="how-items">
-                <div class="how-item reveal">
-                    <div class="how-number">01</div>
-                    <h3>Story First</h3>
-                    <p>We start with the story, not the lesson. If the narrative doesn't captivate on its own, nothing else matters. Our writers craft stories that surprise, delight, and stick, with that meaningfull lesson layered in so naturally you barely notice it's there.</p>
-                </div>
-                <div class="how-item reveal reveal-delay-1">
-                    <div class="how-number">02</div>
-                    <h3>Art That Earns the Shelf</h3>
-                    <p>We work with illustrators whose work belongs on walls, not just pages. Rich color, real texture, compositions that reward a second and third look. These books don't end up in a donation bin.</p>
-                </div>
-                <div class="how-item reveal reveal-delay-2">
-                    <div class="how-number">03</div>
-                    <h3>Moments, Not Just Pages</h3>
-                    <p>Spread by spread, we design natural pauses, questions, and interactive beats that pull parent and child into the story together.</p>
-                </div>
-            </div>
+      <div class="section-inner" style="position: relative">
+        <div class="doodle doodle-spin" style="top: 0; right: 0">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M10 2V18M2 10H18"
+              stroke="#E8734E"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+          </svg>
         </div>
+
+        <div class="how-header">
+          <div class="section-label reveal">How We Build Books</div>
+          <h2 class="section-heading reveal reveal-delay-1">
+            Stories that delight on <em>every</em> level
+          </h2>
+          <p class="reveal reveal-delay-2">
+            Beautiful enough to display. Smart enough to matter. Fun enough that
+            you'll catch yourself turning pages after they've fallen asleep.
+          </p>
+        </div>
+        <div class="how-items">
+          <div class="how-item reveal">
+            <div class="how-number">01</div>
+            <h3>Story First</h3>
+            <p>
+              We start with the story, not the lesson. If the narrative doesn't
+              captivate on its own, nothing else matters. Our writers craft
+              stories that surprise, delight, and stick, with that meaningfull
+              lesson layered in so naturally you barely notice it's there.
+            </p>
+          </div>
+          <div class="how-item reveal reveal-delay-1">
+            <div class="how-number">02</div>
+            <h3>Art That Earns the Shelf</h3>
+            <p>
+              We work with illustrators whose work belongs on walls, not just
+              pages. Rich color, real texture, compositions that reward a second
+              and third look. These books don't end up in a donation bin.
+            </p>
+          </div>
+          <div class="how-item reveal reveal-delay-2">
+            <div class="how-number">03</div>
+            <h3>Moments, Not Just Pages</h3>
+            <p>
+              Spread by spread, we design natural pauses, questions, and
+              interactive beats that pull parent and child into the story
+              together.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- PULL QUOTE -->
     <section class="pull-quote">
-        <div class="pull-quote-inner reveal" style="position: relative;">
-            <svg width="48" height="36" viewBox="0 0 48 36" fill="none" style="margin-bottom: 1rem;">
-                <path d="M6 20C6 12 10 6 20 4L21 7C14 9 12 13 12 16C14 16 18 18 18 23C18 27 15 30 11 30C7 30 6 26 6 22V20Z" fill="#E8734E" opacity="0.12"/>
-                <path d="M28 20C28 12 32 6 42 4L43 7C36 9 34 13 34 16C36 16 40 18 40 23C40 27 37 30 33 30C29 30 28 26 28 22V20Z" fill="#E8734E" opacity="0.12"/>
-            </svg>
-            <blockquote>"The most important thing a book can do is bring a parent and child <em>closer together.</em> Everything we make starts from that belief."</blockquote>
-            <div class="attribution">— The team at Cedar & Stone</div>
-            <div class="doodle doodle-pulse" style="bottom: -15px; right: -40px;">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <circle cx="8" cy="8" r="5" stroke="#E4AD2B" stroke-width="1.3" fill="#FBF0CE" fill-opacity="0.25" stroke-dasharray="2 3"/>
-                </svg>
-            </div>
+      <div class="pull-quote-inner reveal" style="position: relative">
+        <svg
+          width="48"
+          height="36"
+          viewBox="0 0 48 36"
+          fill="none"
+          style="margin-bottom: 1rem"
+        >
+          <path
+            d="M6 20C6 12 10 6 20 4L21 7C14 9 12 13 12 16C14 16 18 18 18 23C18 27 15 30 11 30C7 30 6 26 6 22V20Z"
+            fill="#E8734E"
+            opacity="0.12"
+          />
+          <path
+            d="M28 20C28 12 32 6 42 4L43 7C36 9 34 13 34 16C36 16 40 18 40 23C40 27 37 30 33 30C29 30 28 26 28 22V20Z"
+            fill="#E8734E"
+            opacity="0.12"
+          />
+        </svg>
+        <blockquote>
+          "The most important thing a book can do is bring a parent and child
+          <em>closer together.</em> Everything we make starts from that belief."
+        </blockquote>
+        <div class="attribution">— The team at Cedar & Stone</div>
+        <div class="doodle doodle-pulse" style="bottom: -15px; right: -40px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle
+              cx="8"
+              cy="8"
+              r="5"
+              stroke="#E4AD2B"
+              stroke-width="1.3"
+              fill="#FBF0CE"
+              fill-opacity="0.25"
+              stroke-dasharray="2 3"
+            />
+          </svg>
         </div>
+      </div>
     </section>
 
     <!-- WHO'S BEHIND OUR BOOKS -->
     <section class="creators-section">
-        <div class="section-inner" style="position: relative;">
-            <div class="doodle doodle-float" style="top: 10px; left: 50%; transform: translateX(-50%);">
-                <svg width="40" height="12" viewBox="0 0 40 12" fill="none">
-                    <path d="M2 6C8 2 14 10 20 6C26 2 32 10 38 6" stroke="#5EAD6B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-                </svg>
-            </div>
-
-            <div class="creators-grid">
-                <div class="creators-text">
-                    <div class="section-label reveal">Who Makes These Books</div>
-                    <h2 class="section-heading reveal reveal-delay-1">Authors and experts who actually <em>get it</em></h2>
-                    <p class="reveal reveal-delay-2">Every Cedar & Stone book is a collaboration between an author with something real to say and a team obsessed with getting every detail right: the story, the art, the pacing, the science behind how children connect with a book.</p>
-                    <p class="reveal reveal-delay-3">We partner with authors, educators, and storytellers who care as much about your child's bookshelf as you do. Then we pair them with world-class illustrators, child development advisors, and a production team that doesn't cut corners.</p>
-                    <p class="reveal reveal-delay-4">The result is a book that your child can hand you for the fourth night in a row, and you genuinely don't mind.</p>
-                </div>
-                <div class="creators-features">
-                    <div class="creator-feature reveal">
-                        <div class="cf-icon">
-                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 2v5M7 4l3 3 3-3M3 10h14M5 14h10M7 18h6"/></svg>
-                        </div>
-                        <div class="cf-text">
-                            <h4>Authors With a Story to Tell</h4>
-                            <p>We work with people who have something genuine to share with kids. Not just a name on a cover, but a real point of view.</p>
-                        </div>
-                    </div>
-                    <div class="creator-feature reveal reveal-delay-1">
-                        <div class="cf-icon">
-                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16V4h8l4 4v8a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M12 4v4h4"/></svg>
-                        </div>
-                        <div class="cf-text">
-                            <h4>Illustrations That Are Display-worthy</h4>
-                            <p>Our illustrators create art that belongs on walls. Rich color, real texture, compositions that make kids point and parents pause.</p>
-                        </div>
-                    </div>
-                    <div class="creator-feature reveal reveal-delay-2">
-                        <div class="cf-icon">
-                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 3L12.5 8H17.5L13.5 11.5L15 17L10 13.5L5 17L6.5 11.5L2.5 8H7.5L10 3Z"/></svg>
-                        </div>
-                        <div class="cf-text">
-                            <h4>Guided by Research</h4>
-                            <p>Child development advisors help shape every book so the pacing, interaction, and storytelling actually support how little brains grow.</p>
-                        </div>
-                    </div>
-                    <div class="creator-feature reveal reveal-delay-3">
-                        <div class="cf-icon">
-                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 2v4M10 14v4M18 10h-4M6 10H2M15.5 4.5l-3 3M7.5 12.5l-3 3M15.5 15.5l-3-3M7.5 7.5l-3-3"/></svg>
-                        </div>
-                        <div class="cf-text">
-                            <h4>Made to a Standard</h4>
-                            <p>Premium materials, thoughtful design, production quality that means these books survive hundreds of bedtimes and still look great.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="section-inner" style="position: relative">
+        <div
+          class="doodle doodle-float"
+          style="top: 10px; left: 50%; transform: translateX(-50%)"
+        >
+          <svg width="40" height="12" viewBox="0 0 40 12" fill="none">
+            <path
+              d="M2 6C8 2 14 10 20 6C26 2 32 10 38 6"
+              stroke="#5EAD6B"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              fill="none"
+            />
+          </svg>
         </div>
+
+        <div class="creators-grid">
+          <div class="creators-text">
+            <div class="section-label reveal">Who Makes These Books</div>
+            <h2 class="section-heading reveal reveal-delay-1">
+              Authors and experts who actually <em>get it</em>
+            </h2>
+            <p class="reveal reveal-delay-2">
+              Every Cedar & Stone book is a collaboration between an author with
+              something real to say and a team obsessed with getting every
+              detail right: the story, the art, the pacing, the science behind
+              how children connect with a book.
+            </p>
+            <p class="reveal reveal-delay-3">
+              We partner with authors, educators, and storytellers who care as
+              much about your child's bookshelf as you do. Then we pair them
+              with world-class illustrators, child development advisors, and a
+              production team that doesn't cut corners.
+            </p>
+            <p class="reveal reveal-delay-4">
+              The result is a book that your child can hand you for the fourth
+              night in a row, and you genuinely don't mind.
+            </p>
+          </div>
+          <div class="creators-features">
+            <div class="creator-feature reveal">
+              <div class="cf-icon">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <path d="M10 2v5M7 4l3 3 3-3M3 10h14M5 14h10M7 18h6" />
+                </svg>
+              </div>
+              <div class="cf-text">
+                <h4>Authors With a Story to Tell</h4>
+                <p>
+                  We work with people who have something genuine to share with
+                  kids. Not just a name on a cover, but a real point of view.
+                </p>
+              </div>
+            </div>
+            <div class="creator-feature reveal reveal-delay-1">
+              <div class="cf-icon">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 16V4h8l4 4v8a1 1 0 01-1 1H5a1 1 0 01-1-1z" />
+                  <path d="M12 4v4h4" />
+                </svg>
+              </div>
+              <div class="cf-text">
+                <h4>Illustrations That Are Display-worthy</h4>
+                <p>
+                  Our illustrators create art that belongs on walls. Rich color,
+                  real texture, compositions that make kids point and parents
+                  pause.
+                </p>
+              </div>
+            </div>
+            <div class="creator-feature reveal reveal-delay-2">
+              <div class="cf-icon">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <path
+                    d="M10 3L12.5 8H17.5L13.5 11.5L15 17L10 13.5L5 17L6.5 11.5L2.5 8H7.5L10 3Z"
+                  />
+                </svg>
+              </div>
+              <div class="cf-text">
+                <h4>Guided by Research</h4>
+                <p>
+                  Child development advisors help shape every book so the
+                  pacing, interaction, and storytelling actually support how
+                  little brains grow.
+                </p>
+              </div>
+            </div>
+            <div class="creator-feature reveal reveal-delay-3">
+              <div class="cf-icon">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <path
+                    d="M10 2v4M10 14v4M18 10h-4M6 10H2M15.5 4.5l-3 3M7.5 12.5l-3 3M15.5 15.5l-3-3M7.5 7.5l-3-3"
+                  />
+                </svg>
+              </div>
+              <div class="cf-text">
+                <h4>Made to a Standard</h4>
+                <p>
+                  Premium materials, thoughtful design, production quality that
+                  means these books survive hundreds of bedtimes and still look
+                  great.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- COLOR RIBBON -->
     <div class="color-ribbon">
-        <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
     </div>
 
     <!-- CONTACT -->
     <section class="contact-section" id="contact">
-        <div class="contact-inner" style="position: relative;">
-            <div class="doodle doodle-float-alt" style="top: -20px; right: -60px;">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <path d="M11 2C11.4 7 15 10.6 20 11C15 11.4 11.4 15 11 20C10.6 15 7 11.4 2 11C7 10.6 10.6 7 11 2Z" stroke="#4A9FD4" stroke-width="1.5" stroke-linecap="round" fill="#CBE5F6" fill-opacity="0.25"/>
-                </svg>
-            </div>
-
-            <div class="section-label reveal">Say Hello</div>
-            <h2 class="section-heading reveal reveal-delay-1">Let's make something <em>worth reading</em></h2>
-            <p class="contact-sub reveal reveal-delay-2">Whether you're a creator with a story to tell or you just want to learn more about what we're building, we'd love to hear from you.</p>
-
-            <form class="contact-form reveal reveal-delay-3" onsubmit="handleSubmit(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" placeholder="Jane" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" placeholder="Doe" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="you@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label>I Am A...</label>
-                    <select required>
-                        <option value="" disabled selected>Select one</option>
-                        <option value="creator">Content Creator</option>
-                        <option value="author">Author / Writer</option>
-                        <option value="parent">Parent</option>
-                        <option value="brand">Brand / Business</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Tell Us More</label>
-                    <textarea placeholder="A book idea, a question, a partnership. We're all ears."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+      <div class="contact-inner" style="position: relative">
+        <div class="doodle doodle-float-alt" style="top: -20px; right: -60px">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path
+              d="M11 2C11.4 7 15 10.6 20 11C15 11.4 11.4 15 11 20C10.6 15 7 11.4 2 11C7 10.6 10.6 7 11 2Z"
+              stroke="#4A9FD4"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              fill="#CBE5F6"
+              fill-opacity="0.25"
+            />
+          </svg>
         </div>
+
+        <div class="section-label reveal">Say Hello</div>
+        <h2 class="section-heading reveal reveal-delay-1">
+          Let's make something <em>worth reading</em>
+        </h2>
+        <p class="contact-sub reveal reveal-delay-2">
+          Whether you're a creator with a story to tell or you just want to
+          learn more about what we're building, we'd love to hear from you.
+        </p>
+
+        <form
+          class="contact-form reveal reveal-delay-3"
+          action="https://formspree.io/f/mjgegyog"
+          method="POST"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input name="First name" type="text" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input name="Last name" type="text" placeholder="Doe" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input name="Email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label>I Am A...</label>
+            <div class="form-group__checkbox">
+              <input
+                type="checkbox"
+                id="creator"
+                name="role"
+                value="creator"
+              />
+              <label for="creator">Content Creator</label>
+            </div>
+            <div class="form-group__checkbox">
+              <input
+                type="checkbox"
+                id="author"
+                name="role"
+                value="author"
+              />
+              <label for="author">Author / Writer</label>
+            </div>
+            <div class="form-group__checkbox">
+              <input
+                type="checkbox"
+                id="parent"
+                name="role"
+                value="parent"
+              />
+              <label for="parent">Parent</label>
+            </div>
+            <div class="form-group__checkbox">
+              <input
+                type="checkbox"
+                id="brand"
+                name="role"
+                value="brand"
+              />
+              <label for="brand">Brand / Business</label>
+            </div>
+            <div class="form-group__checkbox">
+              <input
+                type="checkbox"
+                id="other"
+                name="role"
+                value="other"
+              />
+              <label for="other">Other</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tell Us More</label>
+            <textarea
+              name="message"
+              placeholder="A book idea, a question, a partnership. We're all ears."
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">Cedar <span class="logo-ampersand">&</span> Stone</div>
-        <p>Children's books worth the time. &copy; 2025 Cedar and Stone, LLC.</p>
+      <div class="footer-logo">
+        Cedar <span class="logo-ampersand">&</span> Stone
+      </div>
+      <p>Children's books worth the time. &copy; 2025 Cedar and Stone, LLC.</p>
     </footer>
 
     <script>
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
+      const nav = document.getElementById("nav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 50);
+      });
 
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        reveals.forEach(el => observer.observe(el));
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+      );
+      reveals.forEach((el) => observer.observe(el));
 
-        function handleSubmit(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('.submit-btn');
-            btn.textContent = 'Sent ✓';
-            btn.style.background = '#5EAD6B';
-            setTimeout(() => {
-                btn.textContent = 'Send Message';
-                btn.style.background = '';
-                e.target.reset();
-            }, 3000);
-        }
+      function handleSubmit(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector(".submit-btn");
+        btn.textContent = "Sent ✓";
+        btn.style.background = "#5EAD6B";
+        setTimeout(() => {
+          btn.textContent = "Send Message";
+          btn.style.background = "";
+          e.target.reset();
+        }, 3000);
+      }
     </script>
-</body>
+  </body>
 </html>

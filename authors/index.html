@@ -1,903 +1,1338 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Authors | Cedar and Stone</title>
-    <link rel="stylesheet" href="./CSS/nav.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/nav.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=Fredoka:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --white: #FFFFFF;
-            --off-white: #FAFAF8;
-            --light-gray: #F3F2EF;
-            --mid-gray: #E4E2DD;
-            --text-light: #8A8780;
-            --text-med: #5C5A55;
-            --text-dark: #2D2B28;
-            --poppy: #E8734E;
-            --poppy-soft: #FDDDD2;
-            --mustard: #E4AD2B;
-            --mustard-soft: #FBF0CE;
-            --sage: #5EAD6B;
-            --sage-soft: #D2EDCF;
-            --sky: #4A9FD4;
-            --sky-soft: #CBE5F6;
-            --plum: #9878B5;
-            --plum-soft: #E4D8F0;
-        }
+      :root {
+        --white: #ffffff;
+        --off-white: #fafaf8;
+        --light-gray: #f3f2ef;
+        --mid-gray: #e4e2dd;
+        --text-light: #8a8780;
+        --text-med: #5c5a55;
+        --text-dark: #2d2b28;
+        --poppy: #e8734e;
+        --poppy-soft: #fdddd2;
+        --mustard: #e4ad2b;
+        --mustard-soft: #fbf0ce;
+        --sage: #5ead6b;
+        --sage-soft: #d2edcf;
+        --sky: #4a9fd4;
+        --sky-soft: #cbe5f6;
+        --plum: #9878b5;
+        --plum-soft: #e4d8f0;
+      }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
 
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--white);
-            color: var(--text-dark);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+      body {
+        font-family: "Outfit", sans-serif;
+        background: var(--white);
+        color: var(--text-dark);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
 
-        /* ===================== DOODLES ===================== */
-        .doodle {
-            position: absolute;
-            pointer-events: none;
-            z-index: 2;
-        }
-        .doodle svg { display: block; }
+      /* ===================== DOODLES ===================== */
+      .doodle {
+        position: absolute;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .doodle svg {
+        display: block;
+      }
 
-        @keyframes doodleFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-6px) rotate(2deg); }
+      @keyframes doodleFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
         }
-        @keyframes doodleFloatAlt {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-4px) rotate(-3deg); }
+        50% {
+          transform: translateY(-6px) rotate(2deg);
         }
-        @keyframes doodleSpin {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(12deg); }
+      }
+      @keyframes doodleFloatAlt {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
         }
-        @keyframes doodlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+        50% {
+          transform: translateY(-4px) rotate(-3deg);
         }
+      }
+      @keyframes doodleSpin {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(12deg);
+        }
+      }
+      @keyframes doodlePulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+      }
 
-        .doodle-float { animation: doodleFloat 5s ease-in-out infinite; }
-        .doodle-float-alt { animation: doodleFloatAlt 6s ease-in-out infinite; }
-        .doodle-spin { animation: doodleSpin 7s ease-in-out infinite; }
-        .doodle-pulse { animation: doodlePulse 4s ease-in-out infinite; }
+      .doodle-float {
+        animation: doodleFloat 5s ease-in-out infinite;
+      }
+      .doodle-float-alt {
+        animation: doodleFloatAlt 6s ease-in-out infinite;
+      }
+      .doodle-spin {
+        animation: doodleSpin 7s ease-in-out infinite;
+      }
+      .doodle-pulse {
+        animation: doodlePulse 4s ease-in-out infinite;
+      }
 
-        /* ===================== HERO ===================== */
+      /* ===================== HERO ===================== */
+      .hero {
+        padding: 10rem 2.5rem 6rem;
+        max-width: 820px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+      }
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-med);
+        margin-bottom: 1.75rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.2s forwards;
+      }
+
+      .hero-tag-line {
+        width: 24px;
+        height: 1.5px;
+        background: var(--poppy);
+      }
+
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(2.6rem, 5vw, 4rem);
+        line-height: 1.1;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        color: var(--text-dark);
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.4s forwards;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: var(--poppy);
+        position: relative;
+      }
+
+      .hero h1 em::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: -4px;
+        right: -4px;
+        height: 8px;
+        background: var(--mustard-soft);
+        border-radius: 4px;
+        z-index: -1;
+        transform: rotate(-0.5deg);
+      }
+
+      .hero-sub {
+        font-size: 1.15rem;
+        line-height: 1.75;
+        color: var(--text-med);
+        font-weight: 300;
+        max-width: 620px;
+        margin: 0 auto 2.5rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.6s forwards;
+      }
+
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--white);
+        background: var(--text-dark);
+        text-decoration: none;
+        padding: 0.85rem 2rem;
+        border-radius: 100px;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 0.8s forwards;
+        transition: all 0.3s ease;
+      }
+
+      .hero-cta:hover {
+        background: var(--poppy);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(232, 115, 78, 0.2);
+      }
+
+      .hero-cta svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===================== COLOR RIBBON ===================== */
+      .color-ribbon {
+        display: flex;
+        height: 4px;
+      }
+      .color-ribbon span {
+        flex: 1;
+      }
+      .color-ribbon span:nth-child(1) {
+        background: var(--sage);
+      }
+      .color-ribbon span:nth-child(2) {
+        background: var(--mustard);
+      }
+      .color-ribbon span:nth-child(3) {
+        background: var(--poppy);
+      }
+      .color-ribbon span:nth-child(4) {
+        background: var(--sky);
+      }
+      .color-ribbon span:nth-child(5) {
+        background: var(--plum);
+      }
+
+      /* ===================== SHARED ===================== */
+      section {
+        padding: 6.5rem 2rem;
+      }
+      .section-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+
+      .section-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 1.25rem;
+      }
+
+      .section-heading {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+        font-weight: 400;
+        line-height: 1.15;
+        margin-bottom: 1.25rem;
+        color: var(--text-dark);
+      }
+
+      .section-heading em {
+        font-style: italic;
+        color: var(--poppy);
+      }
+
+      /* ===================== THE PITCH ===================== */
+      .pitch-section {
+        background: var(--off-white);
+      }
+
+      .pitch-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+
+      .pitch-text p {
+        font-size: 1.02rem;
+        line-height: 1.8;
+        color: var(--text-med);
+        font-weight: 300;
+        margin-bottom: 1.25rem;
+      }
+
+      .pitch-highlight {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--mid-gray);
+      }
+
+      .pitch-highlight blockquote {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.5rem;
+        line-height: 1.35;
+        font-weight: 400;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+      }
+
+      .pitch-highlight blockquote em {
+        color: var(--poppy);
+        font-style: italic;
+      }
+
+      .pitch-highlight p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: var(--text-med);
+        font-weight: 300;
+      }
+
+      /* ===================== PROCESS ===================== */
+      .process-section {
+        background: var(--white);
+      }
+
+      .process-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 4rem;
+      }
+
+      .process-header p {
+        font-size: 1.02rem;
+        line-height: 1.8;
+        color: var(--text-med);
+        font-weight: 300;
+      }
+
+      .process-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+      }
+
+      /* Vertical connecting line */
+      .process-steps::before {
+        content: "";
+        position: absolute;
+        left: 28px;
+        top: 40px;
+        bottom: 40px;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--sage),
+          var(--mustard),
+          var(--poppy),
+          var(--sky),
+          var(--plum)
+        );
+        border-radius: 2px;
+      }
+
+      .process-step {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        padding: 2rem 0;
+        position: relative;
+      }
+
+      .step-number {
+        flex-shrink: 0;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fredoka", sans-serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--white);
+        position: relative;
+        z-index: 2;
+      }
+
+      .process-step:nth-child(1) .step-number {
+        background: var(--sage);
+      }
+      .process-step:nth-child(2) .step-number {
+        background: var(--mustard);
+      }
+      .process-step:nth-child(3) .step-number {
+        background: var(--poppy);
+      }
+      .process-step:nth-child(4) .step-number {
+        background: var(--sky);
+      }
+      .process-step:nth-child(5) .step-number {
+        background: var(--plum);
+      }
+
+      .step-content {
+        flex: 1;
+        padding-top: 0.5rem;
+      }
+
+      .step-content h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.25rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+      }
+
+      .step-content p {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: var(--text-med);
+        font-weight: 300;
+        max-width: 540px;
+      }
+
+      /* ===================== WHAT WE BRING ===================== */
+      .bring-section {
+        background: var(--off-white);
+      }
+
+      .bring-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .bring-card {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 2.25rem 1.75rem;
+        border: 1px solid transparent;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bring-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: 16px 16px 0 0;
+      }
+
+      .bring-card:nth-child(1)::before {
+        background: var(--sage);
+      }
+      .bring-card:nth-child(2)::before {
+        background: var(--poppy);
+      }
+      .bring-card:nth-child(3)::before {
+        background: var(--sky);
+      }
+      .bring-card:nth-child(4)::before {
+        background: var(--mustard);
+      }
+      .bring-card:nth-child(5)::before {
+        background: var(--plum);
+      }
+      .bring-card:nth-child(6)::before {
+        background: var(--sage);
+      }
+
+      .bring-card:hover {
+        border-color: var(--mid-gray);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+      }
+
+      .bring-card-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      .bring-card:nth-child(1) .bring-card-icon {
+        background: var(--sage-soft);
+        color: var(--sage);
+      }
+      .bring-card:nth-child(2) .bring-card-icon {
+        background: var(--poppy-soft);
+        color: var(--poppy);
+      }
+      .bring-card:nth-child(3) .bring-card-icon {
+        background: var(--sky-soft);
+        color: var(--sky);
+      }
+      .bring-card:nth-child(4) .bring-card-icon {
+        background: var(--mustard-soft);
+        color: var(--mustard);
+      }
+      .bring-card:nth-child(5) .bring-card-icon {
+        background: var(--plum-soft);
+        color: var(--plum);
+      }
+      .bring-card:nth-child(6) .bring-card-icon {
+        background: var(--sage-soft);
+        color: var(--sage);
+      }
+
+      .bring-card-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .bring-card h4 {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.05rem;
+        font-weight: 400;
+        margin-bottom: 0.4rem;
+      }
+
+      .bring-card p {
+        font-size: 0.85rem;
+        line-height: 1.65;
+        color: var(--text-med);
+        font-weight: 300;
+      }
+
+      /* ===================== PULL QUOTE ===================== */
+      .pull-quote {
+        background: var(--text-dark);
+        text-align: center;
+        padding: 5.5rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pull-quote::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            ellipse 50% 80% at 20% 50%,
+            rgba(94, 173, 107, 0.1),
+            transparent
+          ),
+          radial-gradient(
+            ellipse 40% 60% at 80% 50%,
+            rgba(232, 115, 78, 0.07),
+            transparent
+          );
+      }
+
+      .pull-quote-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        margin: 0 auto;
+      }
+
+      .pull-quote blockquote {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        line-height: 1.4;
+        font-weight: 400;
+        margin-bottom: 1.25rem;
+        color: var(--white);
+      }
+
+      .pull-quote blockquote em {
+        font-style: italic;
+        color: var(--poppy-soft);
+      }
+
+      .pull-quote .attribution {
+        font-size: 0.82rem;
+        color: var(--text-light);
+        font-weight: 300;
+      }
+
+      /* ===================== CONTACT ===================== */
+      .contact-section {
+        background: var(--white);
+        padding: 7rem 2rem 8rem;
+      }
+
+      .contact-inner {
+        max-width: 540px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .contact-sub {
+        font-size: 0.98rem;
+        color: var(--text-med);
+        font-weight: 300;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        text-align: left;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.9rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
+      .form-group__checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .form-group .form-group__checkbox label,
+      .form-group .form-group__checkbox input {
+        cursor: pointer;
+        text-transform: none;
+      }
+
+      .form-group label {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--text-light);
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        font-family: "Outfit", sans-serif;
+        font-size: 0.92rem;
+        font-weight: 300;
+        padding: 0.8rem 1rem;
+        border: 1.5px solid var(--mid-gray);
+        border-radius: 8px;
+        background: var(--off-white);
+        color: var(--text-dark);
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        border-color: var(--poppy);
+        background: var(--white);
+        box-shadow: 0 0 0 3px rgba(232, 115, 78, 0.08);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: var(--text-light);
+      }
+
+      .submit-btn {
+        font-family: "Outfit", sans-serif;
+        font-size: 0.87rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.95rem 2.25rem;
+        background: var(--text-dark);
+        color: var(--white);
+        border: none;
+        border-radius: 100px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 0.5rem;
+        align-self: center;
+      }
+
+      .submit-btn:hover {
+        background: var(--poppy);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(232, 115, 78, 0.2);
+      }
+
+      /* ===================== FOOTER ===================== */
+      footer {
+        background: var(--text-dark);
+        color: var(--text-light);
+        padding: 2.5rem 2rem;
+        text-align: center;
+      }
+
+      .footer-logo {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.05rem;
+        color: var(--white);
+        margin-bottom: 0.4rem;
+      }
+
+      .footer-logo .logo-ampersand {
+        color: var(--poppy);
+      }
+      footer p {
+        font-size: 0.78rem;
+        font-weight: 300;
+      }
+
+      /* ===================== TEXTURE ===================== */
+      .texture-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1000;
+        opacity: 0.012;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* ===================== SCROLL REVEAL ===================== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+
+      /* ===================== RESPONSIVE ===================== */
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem 1.25rem;
+        }
+        section {
+          padding: 4.5rem 1.25rem;
+        }
         .hero {
-            padding: 10rem 2.5rem 6rem;
-            max-width: 820px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
+          padding: 8rem 1.5rem 4rem;
         }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.78rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-med);
-            margin-bottom: 1.75rem;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.2s forwards;
-        }
-
-        .hero-tag-line {
-            width: 24px;
-            height: 1.5px;
-            background: var(--poppy);
-        }
-
-        .hero h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.6rem, 5vw, 4rem);
-            line-height: 1.1;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.4s forwards;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--poppy);
-            position: relative;
-        }
-
-        .hero h1 em::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: -4px;
-            right: -4px;
-            height: 8px;
-            background: var(--mustard-soft);
-            border-radius: 4px;
-            z-index: -1;
-            transform: rotate(-0.5deg);
-        }
-
-        .hero-sub {
-            font-size: 1.15rem;
-            line-height: 1.75;
-            color: var(--text-med);
-            font-weight: 300;
-            max-width: 620px;
-            margin: 0 auto 2.5rem;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.6s forwards;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--white);
-            background: var(--text-dark);
-            text-decoration: none;
-            padding: 0.85rem 2rem;
-            border-radius: 100px;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.8s forwards;
-            transition: all 0.3s ease;
-        }
-
-        .hero-cta:hover {
-            background: var(--poppy);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(232,115,78,0.2);
-        }
-
-        .hero-cta svg { width: 16px; height: 16px; }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===================== COLOR RIBBON ===================== */
-        .color-ribbon { display: flex; height: 4px; }
-        .color-ribbon span { flex: 1; }
-        .color-ribbon span:nth-child(1) { background: var(--sage); }
-        .color-ribbon span:nth-child(2) { background: var(--mustard); }
-        .color-ribbon span:nth-child(3) { background: var(--poppy); }
-        .color-ribbon span:nth-child(4) { background: var(--sky); }
-        .color-ribbon span:nth-child(5) { background: var(--plum); }
-
-        /* ===================== SHARED ===================== */
-        section { padding: 6.5rem 2rem; }
-        .section-inner { max-width: 1080px; margin: 0 auto; }
-
-        .section-label {
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-light);
-            margin-bottom: 1.25rem;
-        }
-
-        .section-heading {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-            font-weight: 400;
-            line-height: 1.15;
-            margin-bottom: 1.25rem;
-            color: var(--text-dark);
-        }
-
-        .section-heading em {
-            font-style: italic;
-            color: var(--poppy);
-        }
-
-        /* ===================== THE PITCH ===================== */
-        .pitch-section { background: var(--off-white); }
-
         .pitch-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
+          grid-template-columns: 1fr;
+          gap: 3rem;
         }
-
-        .pitch-text p {
-            font-size: 1.02rem;
-            line-height: 1.8;
-            color: var(--text-med);
-            font-weight: 300;
-            margin-bottom: 1.25rem;
-        }
-
-        .pitch-highlight {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-            border: 1px solid var(--mid-gray);
-        }
-
-        .pitch-highlight blockquote {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
-            line-height: 1.35;
-            font-weight: 400;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .pitch-highlight blockquote em { color: var(--poppy); font-style: italic; }
-
-        .pitch-highlight p {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: var(--text-med);
-            font-weight: 300;
-        }
-
-        /* ===================== PROCESS ===================== */
-        .process-section { background: var(--white); }
-
-        .process-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 4rem;
-        }
-
-        .process-header p {
-            font-size: 1.02rem;
-            line-height: 1.8;
-            color: var(--text-med);
-            font-weight: 300;
-        }
-
-        .process-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            position: relative;
-        }
-
-        /* Vertical connecting line */
-        .process-steps::before {
-            content: '';
-            position: absolute;
-            left: 28px;
-            top: 40px;
-            bottom: 40px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--sage), var(--mustard), var(--poppy), var(--sky), var(--plum));
-            border-radius: 2px;
-        }
-
-        .process-step {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-            padding: 2rem 0;
-            position: relative;
-        }
-
-        .step-number {
-            flex-shrink: 0;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Fredoka', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--white);
-            position: relative;
-            z-index: 2;
-        }
-
-        .process-step:nth-child(1) .step-number { background: var(--sage); }
-        .process-step:nth-child(2) .step-number { background: var(--mustard); }
-        .process-step:nth-child(3) .step-number { background: var(--poppy); }
-        .process-step:nth-child(4) .step-number { background: var(--sky); }
-        .process-step:nth-child(5) .step-number { background: var(--plum); }
-
-        .step-content { flex: 1; padding-top: 0.5rem; }
-
-        .step-content h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-        }
-
-        .step-content p {
-            font-size: 0.92rem;
-            line-height: 1.7;
-            color: var(--text-med);
-            font-weight: 300;
-            max-width: 540px;
-        }
-
-        /* ===================== WHAT WE BRING ===================== */
-        .bring-section { background: var(--off-white); }
-
         .bring-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
-
-        .bring-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2.25rem 1.75rem;
-            border: 1px solid transparent;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+        .process-steps::before {
+          left: 27px;
         }
-
-        .bring-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            border-radius: 16px 16px 0 0;
-        }
-
-        .bring-card:nth-child(1)::before { background: var(--sage); }
-        .bring-card:nth-child(2)::before { background: var(--poppy); }
-        .bring-card:nth-child(3)::before { background: var(--sky); }
-        .bring-card:nth-child(4)::before { background: var(--mustard); }
-        .bring-card:nth-child(5)::before { background: var(--plum); }
-        .bring-card:nth-child(6)::before { background: var(--sage); }
-
-        .bring-card:hover {
-            border-color: var(--mid-gray);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 28px rgba(0,0,0,0.05);
-        }
-
-        .bring-card-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .bring-card:nth-child(1) .bring-card-icon { background: var(--sage-soft); color: var(--sage); }
-        .bring-card:nth-child(2) .bring-card-icon { background: var(--poppy-soft); color: var(--poppy); }
-        .bring-card:nth-child(3) .bring-card-icon { background: var(--sky-soft); color: var(--sky); }
-        .bring-card:nth-child(4) .bring-card-icon { background: var(--mustard-soft); color: var(--mustard); }
-        .bring-card:nth-child(5) .bring-card-icon { background: var(--plum-soft); color: var(--plum); }
-        .bring-card:nth-child(6) .bring-card-icon { background: var(--sage-soft); color: var(--sage); }
-
-        .bring-card-icon svg { width: 20px; height: 20px; }
-
-        .bring-card h4 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem;
-            font-weight: 400;
-            margin-bottom: 0.4rem;
-        }
-
-        .bring-card p {
-            font-size: 0.85rem;
-            line-height: 1.65;
-            color: var(--text-med);
-            font-weight: 300;
-        }
-
-        /* ===================== PULL QUOTE ===================== */
-        .pull-quote {
-            background: var(--text-dark);
-            text-align: center;
-            padding: 5.5rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pull-quote::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background:
-                radial-gradient(ellipse 50% 80% at 20% 50%, rgba(94,173,107,0.1), transparent),
-                radial-gradient(ellipse 40% 60% at 80% 50%, rgba(232,115,78,0.07), transparent);
-        }
-
-        .pull-quote-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 680px;
-            margin: 0 auto;
-        }
-
-        .pull-quote blockquote {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(1.4rem, 3vw, 2rem);
-            line-height: 1.4;
-            font-weight: 400;
-            margin-bottom: 1.25rem;
-            color: var(--white);
-        }
-
-        .pull-quote blockquote em {
-            font-style: italic;
-            color: var(--poppy-soft);
-        }
-
-        .pull-quote .attribution {
-            font-size: 0.82rem;
-            color: var(--text-light);
-            font-weight: 300;
-        }
-
-        /* ===================== CONTACT ===================== */
-        .contact-section {
-            background: var(--white);
-            padding: 7rem 2rem 8rem;
-        }
-
-        .contact-inner {
-            max-width: 540px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-sub {
-            font-size: 0.98rem;
-            color: var(--text-med);
-            font-weight: 300;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            text-align: left;
-        }
-
         .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.9rem;
+          grid-template-columns: 1fr;
         }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
+        .pull-quote {
+          padding: 4rem 1.5rem;
         }
-
-        .form-group label {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--text-light);
+        .doodle {
+          display: none;
         }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 300;
-            padding: 0.8rem 1rem;
-            border: 1.5px solid var(--mid-gray);
-            border-radius: 8px;
-            background: var(--off-white);
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--poppy);
-            background: var(--white);
-            box-shadow: 0 0 0 3px rgba(232,115,78,0.08);
-        }
-
-        .form-group textarea { resize: vertical; min-height: 120px; }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder { color: var(--text-light); }
-
-        .submit-btn {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.87rem;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.95rem 2.25rem;
-            background: var(--text-dark);
-            color: var(--white);
-            border: none;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 0.5rem;
-            align-self: center;
-        }
-
-        .submit-btn:hover {
-            background: var(--poppy);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(232,115,78,0.2);
-        }
-
-        /* ===================== FOOTER ===================== */
-        footer {
-            background: var(--text-dark);
-            color: var(--text-light);
-            padding: 2.5rem 2rem;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem;
-            color: var(--white);
-            margin-bottom: 0.4rem;
-        }
-
-        .footer-logo .logo-ampersand { color: var(--poppy); }
-        footer p { font-size: 0.78rem; font-weight: 300; }
-
-        /* ===================== TEXTURE ===================== */
-        .texture-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            z-index: 1000;
-            opacity: 0.012;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-        }
-
-        /* ===================== SCROLL REVEAL ===================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-
-        /* ===================== RESPONSIVE ===================== */
-        @media (max-width: 768px) {
-            nav { padding: 1rem 1.25rem; }
-            section { padding: 4.5rem 1.25rem; }
-            .hero { padding: 8rem 1.5rem 4rem; }
-            .pitch-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .bring-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .process-steps::before { left: 27px; }
-            .form-row { grid-template-columns: 1fr; }
-            .pull-quote { padding: 4rem 1.5rem; }
-            .doodle { display: none; }
-        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="texture-overlay"></div>
 
     <!-- NAV -->
     <nav id="nav">
-        <a href="/" class="logo">
-            <span class="logo-text">Cedar <span class="logo-ampersand">&</span> Stone</span>
-        </a>
-        <div class="nav-links">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/authors" class="nav-link active">Authors</a>
-            <a href="#contact" class="nav-contact">Get in Touch</a>
-        </div>
+      <a href="/" class="logo">
+        <span class="logo-text"
+          >Cedar <span class="logo-ampersand">&</span> Stone</span
+        >
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/authors" class="nav-link active">Authors</a>
+        <a href="#contact" class="nav-contact">Get in Touch</a>
+      </div>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-        <div class="doodle doodle-float" style="top: 30%; left: -40px;">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <path d="M14 3C14.5 9 19 13.5 25 14C19 14.5 14.5 19 14 25C13.5 19 9 14.5 3 14C9 13.5 13.5 9 14 3Z" stroke="#E4AD2B" stroke-width="1.8" stroke-linecap="round" fill="#FBF0CE" fill-opacity="0.4"/>
-            </svg>
-        </div>
-        <div class="doodle doodle-float-alt" style="top: 25%; right: -30px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="9" stroke="#4A9FD4" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2 4" fill="none"/>
-            </svg>
-        </div>
+      <div class="doodle doodle-float" style="top: 30%; left: -40px">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path
+            d="M14 3C14.5 9 19 13.5 25 14C19 14.5 14.5 19 14 25C13.5 19 9 14.5 3 14C9 13.5 13.5 9 14 3Z"
+            stroke="#E4AD2B"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            fill="#FBF0CE"
+            fill-opacity="0.4"
+          />
+        </svg>
+      </div>
+      <div class="doodle doodle-float-alt" style="top: 25%; right: -30px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle
+            cx="12"
+            cy="12"
+            r="9"
+            stroke="#4A9FD4"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-dasharray="2 4"
+            fill="none"
+          />
+        </svg>
+      </div>
 
-        <div class="hero-tag">
-            <span class="hero-tag-line"></span>
-            For Authors & Creators
-        </div>
-        <h1>You have the audience. We'll build <em>the book.</em></h1>
-        <p class="hero-sub">Cedar & Stone partners with authors and creators to produce extraordinary children's books. Backed by research, crafted by world-class creatives, and launched to your audience with precision.</p>
-        <a href="#contact" class="hero-cta">
-            Start a conversation
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
+      <div class="hero-tag">
+        <span class="hero-tag-line"></span>
+        For Authors & Creators
+      </div>
+      <h1>You have the audience. We'll build <em>the book.</em></h1>
+      <p class="hero-sub">
+        Cedar & Stone partners with authors and creators to produce
+        extraordinary children's books. Backed by research, crafted by
+        world-class creatives, and launched to your audience with precision.
+      </p>
+      <a href="#contact" class="hero-cta">
+        Start a conversation
+        <svg
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 8h10M9 4l4 4-4 4" />
+        </svg>
+      </a>
     </section>
 
     <div class="color-ribbon">
-        <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
     </div>
 
     <!-- THE PITCH -->
     <section class="pitch-section">
-        <div class="section-inner" style="position: relative;">
-            <div class="doodle doodle-spin" style="top: -10px; right: 20px;">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M9 3V15M3 9H15" stroke="#E8734E" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </div>
-
-            <div class="pitch-grid">
-                <div class="pitch-text">
-                    <div class="section-label reveal">The Partnership</div>
-                    <h2 class="section-heading reveal reveal-delay-1">This isn't a sponsorship. <em>It's your book.</em></h2>
-                    <p class="reveal reveal-delay-2">Most creators with large audiences have thought about making a children's book. The idea is there. The audience is there. What's missing is the team, the expertise, and the infrastructure to make it real.</p>
-                    <p class="reveal reveal-delay-3">That's what Cedar & Stone provides. We bring child development expertise, world-class illustrators, experienced writers, and a full production and launch pipeline. So you can focus on being the author, not the publisher.</p>
-                    <p class="reveal reveal-delay-4">Your name goes on the cover. Your story gets told. Your audience gets something they'll genuinely treasure. We handle everything else.</p>
-                </div>
-                <div class="pitch-highlight reveal reveal-delay-2">
-                    <blockquote>"I've been wanting to make a children's book <em>for years</em>. I just never knew where to start."</blockquote>
-                    <p>We hear this from almost every author we work with. You don't need to know how to write a picture book, find an illustrator, manage a print run, or build a launch funnel. You just need the idea and the audience. We'll take care of the rest.</p>
-                </div>
-            </div>
+      <div class="section-inner" style="position: relative">
+        <div class="doodle doodle-spin" style="top: -10px; right: 20px">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              d="M9 3V15M3 9H15"
+              stroke="#E8734E"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
         </div>
+
+        <div class="pitch-grid">
+          <div class="pitch-text">
+            <div class="section-label reveal">The Partnership</div>
+            <h2 class="section-heading reveal reveal-delay-1">
+              This isn't a sponsorship. <em>It's your book.</em>
+            </h2>
+            <p class="reveal reveal-delay-2">
+              Most creators with large audiences have thought about making a
+              children's book. The idea is there. The audience is there. What's
+              missing is the team, the expertise, and the infrastructure to make
+              it real.
+            </p>
+            <p class="reveal reveal-delay-3">
+              That's what Cedar & Stone provides. We bring child development
+              expertise, world-class illustrators, experienced writers, and a
+              full production and launch pipeline. So you can focus on being the
+              author, not the publisher.
+            </p>
+            <p class="reveal reveal-delay-4">
+              Your name goes on the cover. Your story gets told. Your audience
+              gets something they'll genuinely treasure. We handle everything
+              else.
+            </p>
+          </div>
+          <div class="pitch-highlight reveal reveal-delay-2">
+            <blockquote>
+              "I've been wanting to make a children's book <em>for years</em>. I
+              just never knew where to start."
+            </blockquote>
+            <p>
+              We hear this from almost every author we work with. You don't need
+              to know how to write a picture book, find an illustrator, manage a
+              print run, or build a launch funnel. You just need the idea and
+              the audience. We'll take care of the rest.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- PROCESS -->
     <section class="process-section">
-        <div class="section-inner" style="position: relative;">
-            <div class="doodle doodle-pulse" style="top: 0; right: 60px;">
-                <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
-                    <path d="M10 16C10 16 2 11 2 6C2 3.5 4 2 6.5 2C8 2 9.5 3 10 4C10.5 3 12 2 13.5 2C16 2 18 3.5 18 6C18 11 10 16 10 16Z" stroke="#9878B5" stroke-width="1.5" stroke-linecap="round" fill="#E4D8F0" fill-opacity="0.3"/>
-                </svg>
-            </div>
-
-            <div class="process-header">
-                <div class="section-label reveal">How It Works</div>
-                <h2 class="section-heading reveal reveal-delay-1">From idea to <em>printed book</em></h2>
-                <p class="reveal reveal-delay-2">We've refined this process across dozens of books. Every step is designed to make it easy for you and exceptional for your audience.</p>
-            </div>
-
-            <div class="process-steps">
-                <div class="process-step reveal">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Discovery</h3>
-                        <p>We start with a conversation about your vision, your audience, and the kind of book that feels authentically you. No templates. Every project starts from scratch.</p>
-                    </div>
-                </div>
-                <div class="process-step reveal reveal-delay-1">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Story Development</h3>
-                        <p>Our writers work with you to shape the narrative, building a story that captivates kids, resonates with parents, and carries your voice throughout. Child development advisors weigh in on pacing, themes, and age-appropriate engagement.</p>
-                    </div>
-                </div>
-                <div class="process-step reveal reveal-delay-2">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Illustration & Design</h3>
-                        <p>We match you with an illustrator whose style fits your vision. You'll see sketches, give feedback, and watch the art come to life. until every page is something you're proud to put your name on.</p>
-                    </div>
-                </div>
-                <div class="process-step reveal reveal-delay-3">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Production</h3>
-                        <p>We handle printing, materials, binding, and quality control. Premium production at scale. The kind of book that feels good in your hands and survives hundreds of bedtimes.</p>
-                    </div>
-                </div>
-                <div class="process-step reveal reveal-delay-4">
-                    <div class="step-number">5</div>
-                    <div class="step-content">
-                        <h3>Launch</h3>
-                        <p>This is where your audience meets the book. We build the entire launch strategy: pre-orders, bundles, email campaigns, landing pages, fulfillment, all coordinated around your content calendar to maximize impact.</p>
-                    </div>
-                </div>
-            </div>
+      <div class="section-inner" style="position: relative">
+        <div class="doodle doodle-pulse" style="top: 0; right: 60px">
+          <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
+            <path
+              d="M10 16C10 16 2 11 2 6C2 3.5 4 2 6.5 2C8 2 9.5 3 10 4C10.5 3 12 2 13.5 2C16 2 18 3.5 18 6C18 11 10 16 10 16Z"
+              stroke="#9878B5"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              fill="#E4D8F0"
+              fill-opacity="0.3"
+            />
+          </svg>
         </div>
+
+        <div class="process-header">
+          <div class="section-label reveal">How It Works</div>
+          <h2 class="section-heading reveal reveal-delay-1">
+            From idea to <em>printed book</em>
+          </h2>
+          <p class="reveal reveal-delay-2">
+            We've refined this process across dozens of books. Every step is
+            designed to make it easy for you and exceptional for your audience.
+          </p>
+        </div>
+
+        <div class="process-steps">
+          <div class="process-step reveal">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Discovery</h3>
+              <p>
+                We start with a conversation about your vision, your audience,
+                and the kind of book that feels authentically you. No templates.
+                Every project starts from scratch.
+              </p>
+            </div>
+          </div>
+          <div class="process-step reveal reveal-delay-1">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Story Development</h3>
+              <p>
+                Our writers work with you to shape the narrative, building a
+                story that captivates kids, resonates with parents, and carries
+                your voice throughout. Child development advisors weigh in on
+                pacing, themes, and age-appropriate engagement.
+              </p>
+            </div>
+          </div>
+          <div class="process-step reveal reveal-delay-2">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Illustration & Design</h3>
+              <p>
+                We match you with an illustrator whose style fits your vision.
+                You'll see sketches, give feedback, and watch the art come to
+                life. until every page is something you're proud to put your
+                name on.
+              </p>
+            </div>
+          </div>
+          <div class="process-step reveal reveal-delay-3">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Production</h3>
+              <p>
+                We handle printing, materials, binding, and quality control.
+                Premium production at scale. The kind of book that feels good in
+                your hands and survives hundreds of bedtimes.
+              </p>
+            </div>
+          </div>
+          <div class="process-step reveal reveal-delay-4">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h3>Launch</h3>
+              <p>
+                This is where your audience meets the book. We build the entire
+                launch strategy: pre-orders, bundles, email campaigns, landing
+                pages, fulfillment, all coordinated around your content calendar
+                to maximize impact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- WHAT WE BRING -->
     <section class="bring-section">
-        <div class="section-inner" style="position: relative;">
-            <div class="doodle doodle-float" style="top: -5px; left: 50%; transform: translateX(-50%);">
-                <svg width="40" height="12" viewBox="0 0 40 12" fill="none">
-                    <path d="M2 6C8 2 14 10 20 6C26 2 32 10 38 6" stroke="#5EAD6B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-                </svg>
-            </div>
-
-            <div style="text-align:center;max-width:600px;margin:0 auto;">
-                <div class="section-label reveal">What We Bring</div>
-                <h2 class="section-heading reveal reveal-delay-1">Expertise and infrastructure <em>you don't have to build</em></h2>
-            </div>
-
-            <div class="bring-grid">
-                <div class="bring-card reveal">
-                    <div class="bring-card-icon">
-                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 2v5M7 4l3 3 3-3M3 10h14M5 14h10M7 18h6"/></svg>
-                    </div>
-                    <h4>World-Class Creatives</h4>
-                    <p>Award-caliber illustrators and experienced children's book writers who know how to make stories that work for both kids and parents.</p>
-                </div>
-                <div class="bring-card reveal reveal-delay-1">
-                    <div class="bring-card-icon">
-                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 3L12.5 8H17.5L13.5 11.5L15 17L10 13.5L5 17L6.5 11.5L2.5 8H7.5L10 3Z"/></svg>
-                    </div>
-                    <h4>Research-Backed Design</h4>
-                    <p>Child development advisors shape every book's pacing, interactivity, and storytelling so it genuinely supports how children connect and grow.</p>
-                </div>
-                <div class="bring-card reveal reveal-delay-2">
-                    <div class="bring-card-icon">
-                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16V4h8l4 4v8a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M12 4v4h4"/></svg>
-                    </div>
-                    <h4>Full Production</h4>
-                    <p>From print to warehouse to doorstep. We manage materials, manufacturing, fulfillment, and quality. So you never think about logistics.</p>
-                </div>
-                <div class="bring-card reveal reveal-delay-1">
-                    <div class="bring-card-icon">
-                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg>
-                    </div>
-                    <h4>Launch Strategy</h4>
-                    <p>Pre-order campaigns, landing pages, email sequences, bundles, and paid amplification, all built around your audience and your timeline.</p>
-                </div>
-                <div class="bring-card reveal reveal-delay-2">
-                    <div class="bring-card-icon">
-                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 2v4M10 14v4M18 10h-4M6 10H2M15.5 4.5l-3 3M7.5 12.5l-3 3M15.5 15.5l-3-3M7.5 7.5l-3-3"/></svg>
-                    </div>
-                    <h4>Industry-Leading Royalties</h4>
-                    <p>Royalty structures that reflect the audience you bring. Transparent terms, real upside, and no vague promises about "exposure."</p>
-                </div>
-                <div class="bring-card reveal reveal-delay-3">
-                    <div class="bring-card-icon">
-                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 10c0-4 3-7 7-7s7 3 7 7-3 7-7 7"/><path d="M10 6v4l2 2"/></svg>
-                    </div>
-                    <h4>Ongoing Growth</h4>
-                    <p>For authors who want to go further: product lines, subscription models, conference partnerships, and distribution channels most publishers can't access.</p>
-                </div>
-            </div>
+      <div class="section-inner" style="position: relative">
+        <div
+          class="doodle doodle-float"
+          style="top: -5px; left: 50%; transform: translateX(-50%)"
+        >
+          <svg width="40" height="12" viewBox="0 0 40 12" fill="none">
+            <path
+              d="M2 6C8 2 14 10 20 6C26 2 32 10 38 6"
+              stroke="#5EAD6B"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              fill="none"
+            />
+          </svg>
         </div>
+
+        <div style="text-align: center; max-width: 600px; margin: 0 auto">
+          <div class="section-label reveal">What We Bring</div>
+          <h2 class="section-heading reveal reveal-delay-1">
+            Expertise and infrastructure <em>you don't have to build</em>
+          </h2>
+        </div>
+
+        <div class="bring-grid">
+          <div class="bring-card reveal">
+            <div class="bring-card-icon">
+              <svg
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              >
+                <path d="M10 2v5M7 4l3 3 3-3M3 10h14M5 14h10M7 18h6" />
+              </svg>
+            </div>
+            <h4>World-Class Creatives</h4>
+            <p>
+              Award-caliber illustrators and experienced children's book writers
+              who know how to make stories that work for both kids and parents.
+            </p>
+          </div>
+          <div class="bring-card reveal reveal-delay-1">
+            <div class="bring-card-icon">
+              <svg
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M10 3L12.5 8H17.5L13.5 11.5L15 17L10 13.5L5 17L6.5 11.5L2.5 8H7.5L10 3Z"
+                />
+              </svg>
+            </div>
+            <h4>Research-Backed Design</h4>
+            <p>
+              Child development advisors shape every book's pacing,
+              interactivity, and storytelling so it genuinely supports how
+              children connect and grow.
+            </p>
+          </div>
+          <div class="bring-card reveal reveal-delay-2">
+            <div class="bring-card-icon">
+              <svg
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 16V4h8l4 4v8a1 1 0 01-1 1H5a1 1 0 01-1-1z" />
+                <path d="M12 4v4h4" />
+              </svg>
+            </div>
+            <h4>Full Production</h4>
+            <p>
+              From print to warehouse to doorstep. We manage materials,
+              manufacturing, fulfillment, and quality. So you never think about
+              logistics.
+            </p>
+          </div>
+          <div class="bring-card reveal reveal-delay-1">
+            <div class="bring-card-icon">
+              <svg
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              >
+                <circle cx="10" cy="10" r="7" />
+                <path d="M10 6v4l3 2" />
+              </svg>
+            </div>
+            <h4>Launch Strategy</h4>
+            <p>
+              Pre-order campaigns, landing pages, email sequences, bundles, and
+              paid amplification, all built around your audience and your
+              timeline.
+            </p>
+          </div>
+          <div class="bring-card reveal reveal-delay-2">
+            <div class="bring-card-icon">
+              <svg
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M10 2v4M10 14v4M18 10h-4M6 10H2M15.5 4.5l-3 3M7.5 12.5l-3 3M15.5 15.5l-3-3M7.5 7.5l-3-3"
+                />
+              </svg>
+            </div>
+            <h4>Industry-Leading Royalties</h4>
+            <p>
+              Royalty structures that reflect the audience you bring.
+              Transparent terms, real upside, and no vague promises about
+              "exposure."
+            </p>
+          </div>
+          <div class="bring-card reveal reveal-delay-3">
+            <div class="bring-card-icon">
+              <svg
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              >
+                <path d="M3 10c0-4 3-7 7-7s7 3 7 7-3 7-7 7" />
+                <path d="M10 6v4l2 2" />
+              </svg>
+            </div>
+            <h4>Ongoing Growth</h4>
+            <p>
+              For authors who want to go further: product lines, subscription
+              models, conference partnerships, and distribution channels most
+              publishers can't access.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- PULL QUOTE -->
     <section class="pull-quote">
-        <div class="pull-quote-inner reveal">
-            <svg width="48" height="36" viewBox="0 0 48 36" fill="none" style="margin-bottom: 1rem;">
-                <path d="M6 20C6 12 10 6 20 4L21 7C14 9 12 13 12 16C14 16 18 18 18 23C18 27 15 30 11 30C7 30 6 26 6 22V20Z" fill="#E8734E" opacity="0.15"/>
-                <path d="M28 20C28 12 32 6 42 4L43 7C36 9 34 13 34 16C36 16 40 18 40 23C40 27 37 30 33 30C29 30 28 26 28 22V20Z" fill="#E8734E" opacity="0.15"/>
-            </svg>
-            <blockquote>"We don't just publish your book. We bring the expertise, the research, and the best creatives in the world to <em>bring your vision to life.</em>"</blockquote>
-            <div class="attribution">— Cedar & Stone</div>
-        </div>
+      <div class="pull-quote-inner reveal">
+        <svg
+          width="48"
+          height="36"
+          viewBox="0 0 48 36"
+          fill="none"
+          style="margin-bottom: 1rem"
+        >
+          <path
+            d="M6 20C6 12 10 6 20 4L21 7C14 9 12 13 12 16C14 16 18 18 18 23C18 27 15 30 11 30C7 30 6 26 6 22V20Z"
+            fill="#E8734E"
+            opacity="0.15"
+          />
+          <path
+            d="M28 20C28 12 32 6 42 4L43 7C36 9 34 13 34 16C36 16 40 18 40 23C40 27 37 30 33 30C29 30 28 26 28 22V20Z"
+            fill="#E8734E"
+            opacity="0.15"
+          />
+        </svg>
+        <blockquote>
+          "We don't just publish your book. We bring the expertise, the
+          research, and the best creatives in the world to
+          <em>bring your vision to life.</em>"
+        </blockquote>
+        <div class="attribution">— Cedar & Stone</div>
+      </div>
     </section>
 
     <!-- CONTACT -->
     <section class="contact-section" id="contact">
-        <div class="contact-inner" style="position: relative;">
-            <div class="doodle doodle-float-alt" style="top: -20px; right: -60px;">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <path d="M11 2C11.4 7 15 10.6 20 11C15 11.4 11.4 15 11 20C10.6 15 7 11.4 2 11C7 10.6 10.6 7 11 2Z" stroke="#4A9FD4" stroke-width="1.5" stroke-linecap="round" fill="#CBE5F6" fill-opacity="0.25"/>
-                </svg>
-            </div>
-
-            <div class="section-label reveal">Let's Talk</div>
-            <h2 class="section-heading reveal reveal-delay-1">Ready to make <em>your book?</em></h2>
-            <p class="contact-sub reveal reveal-delay-2">Tell us a little about yourself and what you're thinking. No commitment, just a conversation about what's possible.</p>
-
-            <form class="contact-form reveal reveal-delay-3" onsubmit="handleSubmit(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Platform</label>
-                        <select required>
-                            <option value="" disabled selected>Select one</option>
-                            <option value="youtube">YouTube</option>
-                            <option value="instagram">Instagram</option>
-                            <option value="tiktok">TikTok</option>
-                            <option value="podcast">Podcast</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Audience Size</label>
-                        <select required>
-                            <option value="" disabled selected>Select one</option>
-                            <option value="under-100k">Under 100K</option>
-                            <option value="100k-500k">100K – 500K</option>
-                            <option value="500k-1m">500K – 1M</option>
-                            <option value="1m-5m">1M – 5M</option>
-                            <option value="5m+">5M+</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Tell Us About Your Vision</label>
-                    <textarea placeholder="What kind of book are you imagining? Who is your audience? What matters to you?"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Start the Conversation</button>
-            </form>
+      <div class="contact-inner" style="position: relative">
+        <div class="doodle doodle-float-alt" style="top: -20px; right: -60px">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path
+              d="M11 2C11.4 7 15 10.6 20 11C15 11.4 11.4 15 11 20C10.6 15 7 11.4 2 11C7 10.6 10.6 7 11 2Z"
+              stroke="#4A9FD4"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              fill="#CBE5F6"
+              fill-opacity="0.25"
+            />
+          </svg>
         </div>
+
+        <div class="section-label reveal">Let's Talk</div>
+        <h2 class="section-heading reveal reveal-delay-1">
+          Ready to make <em>your book?</em>
+        </h2>
+        <p class="contact-sub reveal reveal-delay-2">
+          Tell us a little about yourself and what you're thinking. No
+          commitment, just a conversation about what's possible.
+        </p>
+
+        <form
+          class="contact-form reveal reveal-delay-3"
+          action="https://formspree.io/f/mjgegyog"
+          method="POST"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input
+                name="First name"
+                type="text"
+                placeholder="Jane"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input name="Last name" type="text" placeholder="Doe" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              name="Email"
+              type="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>I Am A...</label>
+            <div class="form-group__checkbox">
+              <input type="checkbox" id="creator" name="role" value="creator" />
+              <label for="creator">Content Creator</label>
+            </div>
+            <div class="form-group__checkbox">
+              <input type="checkbox" id="author" name="role" value="author" />
+              <label for="author">Author / Writer</label>
+            </div>
+            <div class="form-group__checkbox">
+              <input type="checkbox" id="parent" name="role" value="parent" />
+              <label for="parent">Parent</label>
+            </div>
+            <div class="form-group__checkbox">
+              <input type="checkbox" id="brand" name="role" value="brand" />
+              <label for="brand">Brand / Business</label>
+            </div>
+            <div class="form-group__checkbox">
+              <input type="checkbox" id="other" name="role" value="other" />
+              <label for="other">Other</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tell Us More</label>
+            <textarea
+              name="message"
+              placeholder="A book idea, a question, a partnership. We're all ears."
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
     </section>
 
     <div class="color-ribbon">
-        <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
     </div>
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">Cedar <span class="logo-ampersand">&</span> Stone</div>
-        <p>Children's books worth the time. &copy; 2025 Cedar and Stone, LLC.</p>
+      <div class="footer-logo">
+        Cedar <span class="logo-ampersand">&</span> Stone
+      </div>
+      <p>Children's books worth the time. &copy; 2025 Cedar and Stone, LLC.</p>
     </footer>
 
     <script>
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
+      const nav = document.getElementById("nav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 50);
+      });
 
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        reveals.forEach(el => observer.observe(el));
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+      );
+      reveals.forEach((el) => observer.observe(el));
 
-        function handleSubmit(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('.submit-btn');
-            btn.textContent = 'Sent ✓';
-            btn.style.background = '#5EAD6B';
-            setTimeout(() => {
-                btn.textContent = 'Start the Conversation';
-                btn.style.background = '';
-                e.target.reset();
-            }, 3000);
-        }
+      function handleSubmit(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector(".submit-btn");
+        btn.textContent = "Sent ✓";
+        btn.style.background = "#5EAD6B";
+        setTimeout(() => {
+          btn.textContent = "Start the Conversation";
+          btn.style.background = "";
+          e.target.reset();
+        }, 3000);
+      }
     </script>
-</body>
+  </body>
 </html>
